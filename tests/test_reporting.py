@@ -32,7 +32,8 @@ def test_markdown_report_contents(result):
 def test_html_report_is_self_contained(result):
     page = to_html(result)
     assert page.startswith("<!doctype html>")
-    assert "<script" not in page and "http://" not in page and "https://" not in page
+    for loader in ("<script", "<link", "src=", "href=", "@import"):  # loads nothing external
+        assert loader not in page.lower()
     assert page.count("class='finding'") == len(result.findings)
 
 

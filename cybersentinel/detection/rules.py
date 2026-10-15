@@ -26,6 +26,8 @@ class DetectionConfig:
     spray_window_min: int = 30            # ... within this many minutes
     success_after_fail_min: int = 15      # success within N min after a brute-force burst
     flag_external_logons: bool = True     # successful logons from public IP addresses
+    discovery_threshold: int = 4          # distinct recon commands by one user on one host ...
+    discovery_window_min: int = 10        # ... within this many minutes
 
 
 PRIVILEGED_GROUPS = ("administrators", "domain admins", "enterprise admins", "schema admins",
@@ -273,5 +275,129 @@ def external_logons(df: pd.DataFrame, cfg: DetectionConfig) -> list[Finding]:
     return out
 
 
+# ---------------------------------------------------------------- process creation (4688)
+
+_SHELLS = {"cmd.exe", "powershell.exe", "pwsh.exe", "wscript.exe", "cscript.exe", "mshta.exe", "rundll32.exe",
+           "regsvr32.exe", "certutil.exe", "bitsadmin.exe", "msbuild.exe", "schtasks.exe", "bash.exe"}
+_OFFICE = {"winword.exe", "excel.exe", "powerpnt.exe", "outlook.exe", "onenote.exe", "msaccess.exe",
+           "mspub.exe", "visio.exe"}
+_WEB = {"w3wp.exe", "httpd.exe", "nginx.exe", "tomcat.exe", "tomcat9.exe", "php-cgi.exe", "sqlservr.exe"}
+
+# (parent images, child images, title, severity, ATT&CK, recommendation)
+PARENT_CHILD_RULES: list[tuple[set[str], set[str], str, Severity, str, str]] = [
+    (_OFFICE, _SHELLS, "Office application spawned {child}", Severity.HIGH, "T1204.002",
+     "Likely a malicious document or macro: identify the opened file, check the child's command line, "
+     "and isolate the host if the activity is not explained."),
+    (_WEB, _SHELLS, "Web/database server spawned {child}", Severity.HIGH, "T1505.003",
+     "Possible web shell: review the web root for recently changed files and the server's request logs."),
+    ({"wmiprvse.exe"}, _SHELLS, "WMI spawned {child}", Severity.MEDIUM, "T1047",
+     "Possible remote execution via WMI: identify the originating host and account."),
+]
+
+# Executables launched from user-writable folders: (pattern, severity). Temp/Downloads are
+# Low because installers routinely run there; Public/Recycle Bin/PerfLogs rarely have a legitimate reason.
+USER_WRITABLE_PATHS: list[tuple[re.Pattern, Severity]] = [
+    (re.compile(r"\\users\\public\\|\\\$recycle\.bin\\|\\perflogs\\", re.I), Severity.MEDIUM),
+    (re.compile(r"\\appdata\\local\\temp\\|\\windows\\temp\\|\\downloads\\", re.I), Severity.LOW),
+]
+
+# Reconnaissance commands, matched against the command line (or image when no command line).
+DISCOVERY_COMMANDS: list[tuple[str, re.Pattern]] = [(k, re.compile(p, re.I)) for k, p in [
+    ("whoami", r"\bwhoami(?:\.exe)?\b"),
+    ("net user", r"\bnet1?(?:\.exe)?\s+user\b"),
+    ("net group", r"\bnet1?(?:\.exe)?\s+(?:local)?group\b"),
+    ("net view/share", r"\bnet1?(?:\.exe)?\s+(?:view|share|session|accounts)\b"),
+    ("ipconfig", r"\bipconfig(?:\.exe)?\b"),
+    ("systeminfo", r"\bsysteminfo(?:\.exe)?\b"),
+    ("nltest", r"\bnltest(?:\.exe)?\b"),
+    ("query user", r"\bquser(?:\.exe)?\b|\bquery(?:\.exe)?\s+user\b"),
+    ("tasklist", r"\btasklist(?:\.exe)?\b"),
+    ("netstat", r"\bnetstat(?:\.exe)?\b"),
+    ("arp", r"\barp(?:\.exe)?\s+-a\b"),
+    ("route print", r"\broute(?:\.exe)?\s+print\b"),
+    ("AD query", r"\bdsquery(?:\.exe)?\b|\bget-ad(?:user|group|computer)\b"),
+    ("klist", r"\bklist(?:\.exe)?\b"),
+    ("wmic recon", r"\bwmic(?:\.exe)?\b.*\b(?:useraccount|group|qfe|computersystem)\b"),
+]]
+
+
+def _image(path) -> str:
+    return str(path).replace("/", "\\").rsplit("\\", 1)[-1].strip().lower() if pd.notna(path) else ""
+
+
+def _processes(df: pd.DataFrame) -> pd.DataFrame:
+    return df[(df["action"] == "process_created") & df["process"].notna()]
+
+
+def suspicious_parent_child(df: pd.DataFrame, cfg: DetectionConfig) -> list[Finding]:
+    procs = _processes(df)
+    if procs.empty:
+        return []
+    child, parent = procs["process"].map(_image), procs["parent_process"].map(_image)
+    out = []
+    for parents, children, title, sev, mitre, rec in PARENT_CHILD_RULES:
+        hits = procs[parent.isin(parents) & child.isin(children)]
+        for (host, p, c), rows in hits.groupby([hits["host"].fillna("unknown"), parent[hits.index],
+                                                child[hits.index]], sort=False):
+            first, last = _span(rows)
+            cmd = rows["command_line"].dropna()
+            entities = {"host": host, "parent": p, "child": c}
+            if rows["user"].notna().any():
+                entities["user"] = rows["user"].dropna().iloc[0]
+            out.append(Finding("SUSPICIOUS_PARENT_CHILD", title.format(child=c), sev,
+                               f"{p} started {c} {len(rows)} time(s)."
+                               + (f" Command line: {cmd.iloc[0][:300]}" if len(cmd) else ""),
+                               first, last, len(rows), entities, rec, mitre, list(rows.index)))
+    return out
+
+
+def user_writable_execution(df: pd.DataFrame, cfg: DetectionConfig) -> list[Finding]:
+    procs = _processes(df)
+    out = []
+    for pattern, sev in USER_WRITABLE_PATHS:
+        hits = procs[procs["process"].str.contains(pattern, na=False)]
+        procs = procs.drop(hits.index)  # each event counts once, at the highest matching severity
+        for (host, path), rows in hits.groupby([hits["host"].fillna("unknown"), hits["process"]], sort=False):
+            first, last = _span(rows)
+            entities = {"host": host, "process": path}
+            if rows["user"].notna().any():
+                entities["user"] = rows["user"].dropna().iloc[0]
+            out.append(Finding("USER_PATH_EXECUTION", f"Process run from user-writable folder: {_image(path)}", sev,
+                               f"{path} was executed {len(rows)} time(s). Malware is commonly dropped and run "
+                               "from folders any user can write to.",
+                               first, last, len(rows), entities,
+                               "Check the file's hash, signer and origin; quarantine it if unknown.",
+                               "T1204.002", list(rows.index)))
+    return out
+
+
+def discovery_burst(df: pd.DataFrame, cfg: DetectionConfig) -> list[Finding]:
+    """Several different reconnaissance commands by one user on one host in a short time."""
+    procs = _processes(df)
+    procs = procs[procs["timestamp"].notna()]
+    if procs.empty:
+        return []
+    text = procs["command_line"].fillna(procs["process"])
+    kind = text.map(lambda t: next((k for k, p in DISCOVERY_COMMANDS if p.search(str(t))), None))
+    recon = procs[kind.notna()].assign(recon=kind.dropna())
+    window = pd.Timedelta(minutes=cfg.discovery_window_min)
+    out = []
+    for (host, user), rows in recon.groupby([recon["host"].fillna("unknown"), recon["user"].fillna("unknown")],
+                                            sort=False):
+        for pos in _bursts(rows["timestamp"], window, cfg.discovery_threshold, distinct=rows["recon"]):
+            burst = rows.iloc[pos]
+            first, last = _span(burst)
+            kinds = list(dict.fromkeys(burst["recon"]))
+            out.append(Finding("DISCOVERY_BURST", f"Reconnaissance commands by {user} on {host}", Severity.MEDIUM,
+                               f"{len(kinds)} different discovery commands within {cfg.discovery_window_min} min "
+                               f"(threshold {cfg.discovery_threshold}): {', '.join(kinds)}. Attackers enumerate "
+                               "users, groups and the network right after gaining access.",
+                               first, last, len(burst), {"user": user, "host": host},
+                               "Confirm whether this was an administrator's work; if not, review the logon session "
+                               "that ran these commands.", "T1087", list(burst.index)))
+    return out
+
+
 ALL_RULES = [single_event_findings, privileged_group_additions, suspicious_commands,
-             brute_force, password_spray, external_logons]
+             brute_force, password_spray, external_logons,
+             suspicious_parent_child, user_writable_execution, discovery_burst]

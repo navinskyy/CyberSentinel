@@ -70,3 +70,11 @@ def test_colliding_event_id_from_other_provider_is_not_a_logon():
     xml = _xml(4625, {"param1": "86400"}).replace("Microsoft-Windows-Security-Auditing", "Microsoft-Windows-EventSystem")
     row = record_to_row(xml)
     assert not row["message"].startswith("An account failed")
+
+
+def test_process_creation_record():
+    row = record_to_row(_xml(4688, {"SubjectUserName": "bob", "TargetUserName": "-",
+                                    "NewProcessName": "C:\\Windows\\System32\\cmd.exe",
+                                    "ParentProcessName": "C:\\Office\\WINWORD.EXE", "CommandLine": "cmd /c whoami"}))
+    assert (row["user"], row["process"], row["parent_process"], row["command_line"]) == \
+           ("bob", "C:\\Windows\\System32\\cmd.exe", "C:\\Office\\WINWORD.EXE", "cmd /c whoami")

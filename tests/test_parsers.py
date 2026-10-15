@@ -124,3 +124,14 @@ def test_load_files_merges_and_sorts():
 ])
 def test_classify_is_provider_aware(eid, source, expected):
     assert classify(eid, "An account failed to log on.", source) == expected
+
+
+def test_4688_parent_process_from_csv_message_and_alias():
+    msg = ("A new process has been created.\n\nCreator Subject:\n\tAccount Name:\t\tbob\n\nTarget Subject:\n"
+           "\tAccount Name:\t\t-\n\nProcess Information:\n\tNew Process Name:\tC:\\Windows\\System32\\cmd.exe\n"
+           "\tCreator Process Name:\tC:\\Office\\WINWORD.EXE\n\tProcess Command Line:\tcmd /c whoami\n")
+    f = extract_fields(msg)
+    assert (f["user"], f["process"], f["parent_process"], f["command_line"]) == \
+           ("bob", "C:\\Windows\\System32\\cmd.exe", "C:\\Office\\WINWORD.EXE", "cmd /c whoami")
+    df, _ = load_file("g.csv", b"Date,EventID,Image,ParentImage\n2026-01-01 10:00:00,4688,a.exe,b.exe\n")
+    assert (df["process"].iloc[0], df["parent_process"].iloc[0]) == ("a.exe", "b.exe")

@@ -91,6 +91,7 @@ def record_to_row(xml: str) -> dict:
         "ip": ip,
         "logon_type": data.get("LogonType"),
         "process": data.get("NewProcessName") or data.get("ProcessName") or data.get("ServiceName"),
+        "parent_process": data.get("ParentProcessName"),
         "command_line": command,
         "message": message,
         "raw": xml,

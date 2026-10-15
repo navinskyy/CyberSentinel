@@ -19,6 +19,7 @@ COLUMN_ALIASES: dict[str, list[str]] = {
     "ip": ["ip", "ipaddress", "sourceip", "srcip", "sourcenetworkaddress", "clientaddress"],
     "logon_type": ["logontype"],
     "process": ["process", "processname", "image", "newprocessname"],
+    "parent_process": ["parentprocess", "parentprocessname", "parentimage", "creatorprocessname"],
     "command_line": ["commandline", "processcommandline", "cmdline"],
     "message": ["message", "description", "details", "msg"],
 }

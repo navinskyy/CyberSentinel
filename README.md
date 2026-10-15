@@ -53,6 +53,9 @@ upload ─► parsers ─► normalized events ─► detection engine ─► fi
 | `PASSWORD_SPRAY` | One IP fails against ≥ 5 distinct accounts in 30 min | High |
 | `EXTERNAL_LOGON` | Successful logon from a public IP (RDP = High) | Medium/High |
 | `GROUP_MEMBER_ADDED` | 4728/4732/4756. Privileged groups (Administrators, Domain Admins, …) = High | Low/High |
+| `SUSPICIOUS_PARENT_CHILD` | 4688: Office app → shell/script host (High), web/DB server → shell (High), WMI → shell (Medium) | Medium/High |
+| `USER_PATH_EXECUTION` | 4688: executable run from `Users\Public`, `$Recycle.Bin`, `PerfLogs` (Medium) or Temp/Downloads (Low) | Low/Medium |
+| `DISCOVERY_BURST` | 4688: one user runs ≥ 4 distinct recon commands (`whoami`, `net user`, `nltest`, …) on one host in 10 min | Medium |
 | `SUSPICIOUS_COMMAND` | Encoded/hidden PowerShell, download cradles, credential dumping, shadow-copy deletion, … | Medium–Critical |
 | `LOG_CLEARED`, `AUDIT_POLICY_CHANGED` | 1102 / 104, 4719 | High |
 | `SERVICE_INSTALLED`, `SCHEDULED_TASK`, `USER_CREATED`, `ACCOUNT_LOCKOUT` | 7045/4697, 4698, 4720, 4740 | Medium |
@@ -73,6 +76,8 @@ $env:CYBERSENTINEL_EVTX = "C:\temp\application.evtx"; .\.venv\Scripts\python -m 
 
 ## Limitations
 
+- Process rules need 4688 auditing enabled ("Audit Process Creation"), and command lines need
+  "Include command line in process creation events". Neither is on by default.
 - Rule-based: it detects known patterns only, and thresholds need tuning per environment.
 - EVTX files have no rendered message text, so messages are built from the event's structured fields.
 - One file's events are analyzed together. There is no persistence between sessions.

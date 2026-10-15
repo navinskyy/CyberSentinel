@@ -23,6 +23,7 @@ EVENT_COLUMNS = [
     "ip",            # source IP address, if known
     "logon_type",    # Windows logon type, if known
     "process",       # process / image name, if known
+    "parent_process",  # creator / parent process image, if known (4688)
     "command_line",  # process command line, if known
     "message",       # human-readable summary
     "raw",           # original record text for evidence

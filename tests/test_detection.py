@@ -149,3 +149,74 @@ def test_events_without_timestamps_skip_time_rules_without_error():
     df = normalize_frame(pd.DataFrame({"action": ["logon_failure"] * 10, "user": ["bob"] * 10}))
     r = analyze(df)
     assert r.errors == [] and "BRUTE_FORCE" not in rule_ids(r)
+
+
+# ---------------------------------------------------------------- process creation (4688)
+
+SYS32 = "C:\\Windows\\System32\\"
+OFFICE = "C:\\Program Files\\Microsoft Office\\root\\Office16\\"
+
+
+def proc(s, user, image, parent=None, cmd=None, host="PC1"):
+    return (s, "process_created", user, None, {"process": image, "parent_process": parent,
+                                              "command_line": cmd or image, "host": host})
+
+
+def test_sample_scenario_process_rules(sample_result):
+    by_rule = {f.rule_id: f for f in sample_result.findings}
+    pc = by_rule["SUSPICIOUS_PARENT_CHILD"]
+    assert (pc.entities["parent"], pc.entities["child"], pc.entities["user"]) == \
+           ("winword.exe", "powershell.exe", "jdoe")
+    assert by_rule["USER_PATH_EXECUTION"].entities["process"] == "C:\\Users\\Public\\update.exe"
+    recon = [f for f in sample_result.findings if f.rule_id == "DISCOVERY_BURST"]
+    assert [f.entities["user"] for f in recon] == ["administrator"]  # mlee's lone ipconfig is not a burst
+
+
+@pytest.mark.parametrize("parent,child,expected", [
+    (OFFICE + "WINWORD.EXE", SYS32 + "cmd.exe", Severity.HIGH),
+    (SYS32 + "inetsrv\\w3wp.exe", SYS32 + "cmd.exe", Severity.HIGH),
+    (SYS32 + "wbem\\WmiPrvSE.exe", SYS32 + "WindowsPowerShell\\v1.0\\powershell.exe", Severity.MEDIUM),
+    ("C:\\Windows\\explorer.exe", SYS32 + "cmd.exe", None),   # user opened a shell
+    (OFFICE + "EXCEL.EXE", OFFICE + "WINWORD.EXE", None),     # Office -> Office
+])
+def test_parent_child(parent, child, expected):
+    found = [f for f in analyze(events([proc(0, "bob", child, parent)])).findings
+             if f.rule_id == "SUSPICIOUS_PARENT_CHILD"]
+    assert [f.severity for f in found] == ([expected] if expected else [])
+
+
+def test_parent_child_groups_repeats():
+    rows = [proc(i, "bob", SYS32 + "cmd.exe", OFFICE + "EXCEL.EXE") for i in range(3)]
+    found = [f for f in analyze(events(rows)).findings if f.rule_id == "SUSPICIOUS_PARENT_CHILD"]
+    assert len(found) == 1 and found[0].count == 3
+
+
+@pytest.mark.parametrize("path,expected", [
+    ("C:\\Users\\Public\\a.exe", Severity.MEDIUM),
+    ("C:\\$Recycle.Bin\\S-1-5-21\\b.exe", Severity.MEDIUM),
+    ("C:\\Users\\bob\\AppData\\Local\\Temp\\setup.exe", Severity.LOW),
+    ("C:\\Users\\bob\\Downloads\\tool.exe", Severity.LOW),
+    ("C:\\Program Files\\App\\app.exe", None),
+])
+def test_user_writable_execution(path, expected):
+    found = [f for f in analyze(events([proc(0, "bob", path)])).findings if f.rule_id == "USER_PATH_EXECUTION"]
+    assert [f.severity for f in found] == ([expected] if expected else [])
+
+
+def test_discovery_burst_threshold_and_distinctness():
+    cmds = ["whoami /all", "net user", "nltest /dclist:", "systeminfo"]
+    three = events([proc(i * 30, "bob", SYS32 + "x.exe", cmd=c) for i, c in enumerate(cmds[:3])])
+    four = events([proc(i * 30, "bob", SYS32 + "x.exe", cmd=c) for i, c in enumerate(cmds)])
+    same = events([proc(i * 30, "bob", SYS32 + "whoami.exe", cmd="whoami") for i in range(10)])
+    assert "DISCOVERY_BURST" not in rule_ids(analyze(three))
+    assert "DISCOVERY_BURST" in rule_ids(analyze(four))
+    assert "DISCOVERY_BURST" not in rule_ids(analyze(same))  # repeats of one command aren't a burst
+    assert "DISCOVERY_BURST" in rule_ids(analyze(three, DetectionConfig(discovery_threshold=3)))
+
+
+def test_discovery_burst_is_per_user_and_window():
+    cmds = ["whoami", "net user", "ipconfig /all", "tasklist"]
+    split_users = events([proc(i, f"u{i % 2}", SYS32 + "x.exe", cmd=c) for i, c in enumerate(cmds)])
+    slow = events([proc(i * 900, "bob", SYS32 + "x.exe", cmd=c) for i, c in enumerate(cmds)])  # 15 min apart
+    assert "DISCOVERY_BURST" not in rule_ids(analyze(split_users))
+    assert "DISCOVERY_BURST" not in rule_ids(analyze(slow))

@@ -103,6 +103,7 @@ def extract_fields(message) -> dict[str, str]:
     out["process"] = (_last_real(_all("New Process Name", message))
                       or _last_real(_all("Service File Name", message))
                       or _last_real(_all("Process Name", message)))
+    out["parent_process"] = _last_real(_all("Creator Process Name", message))
     out["command_line"] = _last_real(_all("Process Command Line", message))
     if not out["command_line"] and out["process"] and " " in out["process"]:
         out["command_line"] = out["process"]  # 7045 "Service File Name" often holds a full command
@@ -126,7 +127,7 @@ def enrich(df: pd.DataFrame) -> pd.DataFrame:
     Values a parser already set are never overwritten."""
     df = df.copy()
     extracted = df["message"].map(extract_fields)
-    for col in ("user", "ip", "logon_type", "process", "command_line"):
+    for col in ("user", "ip", "logon_type", "process", "parent_process", "command_line"):
         fill = extracted.map(lambda d, c=col: d.get(c))
         df[col] = df[col].astype("object").where(df[col].notna(), fill)
     actions = pd.Series([classify(e, m, s) for e, m, s in zip(df["event_id"], df["message"], df["source"])],

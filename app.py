@@ -64,6 +64,8 @@ def sidebar() -> tuple[list[tuple[str, bytes]], dict]:
             "spray_window_min": st.number_input("…within minutes ", 1, 1440, d.spray_window_min),
             "success_after_fail_min": st.number_input("Success after burst, minutes", 1, 1440, d.success_after_fail_min),
             "flag_external_logons": st.checkbox("Flag logons from public IPs", d.flag_external_logons),
+            "discovery_threshold": st.number_input("Distinct recon commands (4688)", 2, 50, d.discovery_threshold),
+            "discovery_window_min": st.number_input("…within minutes  ", 1, 1440, d.discovery_window_min),
         }
     st.sidebar.caption("CyberSentinel only reads logs. It never runs remediation or changes system settings.")
     return files, cfg

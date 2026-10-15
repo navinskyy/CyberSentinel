@@ -19,7 +19,7 @@ def test_sample_mode_renders_without_errors(app):
     assert not app.exception
     assert app.title[0].value == "Security overview"
     metrics = {m.label: m.value for m in app.metric}
-    assert metrics["Findings"] == "12"
+    assert metrics["Findings"] == "17"
     assert metrics["🔴 Critical"] == "1"
     assert len(app.tabs) == 4
     assert any("Successful logon after brute force" in e.label for e in app.expander)
