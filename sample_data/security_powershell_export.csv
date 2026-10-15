@@ -1,4 +1,49 @@
 "TimeCreated","Id","ProviderName","LevelDisplayName","MachineName","Message"
+"2026-03-02T01:00:00Z","4624","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		3
+
+New Logon:
+	Account Name:		svc_backup
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.12
+"
+"2026-03-02T01:58:00Z","4624","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		2
+
+New Logon:
+	Account Name:		DWM-1
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	-
+"
+"2026-03-02T02:40:00Z","4624","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		10
+
+New Logon:
+	Account Name:		kpatel
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.77
+"
 "2026-03-02T08:06:48Z","4624","Microsoft-Windows-Security-Auditing","Information","WS-FINANCE01.corp.example","An account was successfully logged on.
 
 Subject:

@@ -19,7 +19,7 @@ def test_sample_mode_renders_without_errors(app):
     assert not app.exception
     assert app.title[0].value == "Security overview"
     metrics = {m.label: m.value for m in app.metric}
-    assert metrics["Findings"] == "17"
+    assert metrics["Findings"] == "18"
     assert metrics["🔴 Critical"] == "1"
     assert len(app.tabs) == 4
     assert any("Successful logon after brute force" in e.label for e in app.expander)
@@ -31,6 +31,15 @@ def test_threshold_change_reruns_detection(app):
     labels = " ".join(e.label for e in app.expander)
     assert "Repeated failed logons" not in labels
     assert "Password spray" in labels
+
+
+def test_sample_mode_defaults_to_utc_and_timezone_change_applies(app):
+    tz = next(s for s in app.selectbox if s.label.startswith("Timezone"))
+    assert tz.value == "UTC"  # the synthetic organisation works in UTC
+    tz.set_value("Asia/Manila").run()
+    assert not app.exception
+    metrics = {m.label: m.value for m in app.metric}
+    assert int(metrics["Findings"]) > 18  # the UTC workday is evening in Manila
 
 
 def test_welcome_screen_without_data(app):

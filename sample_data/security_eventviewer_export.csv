@@ -1,4 +1,49 @@
 Keywords,Date and Time,Source,Event ID,Task Category
+Audit Success,2026-03-02 01:00:00,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		3
+
+New Logon:
+	Account Name:		svc_backup
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.12
+"
+Audit Success,2026-03-02 01:58:00,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		2
+
+New Logon:
+	Account Name:		DWM-1
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	-
+"
+Audit Success,2026-03-02 02:40:00,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		10
+
+New Logon:
+	Account Name:		kpatel
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.77
+"
 Audit Success,2026-03-02 08:06:48,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
 
 Subject:

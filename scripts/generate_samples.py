@@ -4,6 +4,7 @@ All hosts, users and IPs are fictional (IPs from RFC 5737 documentation ranges).
 Scenario on WS-FINANCE01, 2026-03-02 (UTC):
   - normal workday logons
   - normal process activity (4688)
+  - 02:40 kpatel RDP logon (off-hours); overnight service and DWM logons that are not
   - 09:15 brute force on 'administrator' from 203.0.113.50, ending in a success
   - 09:17 reconnaissance commands run as 'administrator'
   - 10:30 jdoe opens a document: WINWORD spawns PowerShell, which runs C:\\Users\\Public\\update.exe
@@ -67,6 +68,11 @@ def build_events() -> list[dict]:
     add(t + timedelta(seconds=8 * 14 + 3), 4624, msg_4624("administrator", "203.0.113.50", "3"))
     add(t + timedelta(seconds=8 * 14 + 4), 4672,
         "Special privileges assigned to new logon.\n\nSubject:\n\tAccount Name:\t\tadministrator\n")
+
+    # night: one real off-hours RDP logon, plus two that must not be flagged
+    add(DAY + timedelta(hours=1), 4624, msg_4624("svc_backup", "10.0.0.12", "3"))     # network logon
+    add(DAY + timedelta(hours=1, minutes=58), 4624, msg_4624("DWM-1", "-", "2"))      # boot logon
+    add(DAY + timedelta(hours=2, minutes=40), 4624, msg_4624("kpatel", "10.0.0.77", "10"))
 
     sys32, cmd = "C:\\Windows\\System32\\", "C:\\Windows\\System32\\cmd.exe"
     for i in range(25):  # routine process activity, incl. one lone ipconfig (must not count as recon)

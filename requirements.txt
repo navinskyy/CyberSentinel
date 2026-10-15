@@ -1,4 +1,5 @@
-﻿streamlit>=1.30
+streamlit>=1.30
 pandas>=2.0
 evtx>=0.13        # pyevtx-rs; do not also install python-evtx (name collision on Windows)
 pytest>=8.0
+tzdata>=2024.1      # timezone database for zoneinfo on Windows

@@ -8,6 +8,7 @@ from __future__ import annotations
 
 from datetime import datetime, timezone
 from pathlib import Path
+from zoneinfo import available_timezones
 
 import altair as alt
 import pandas as pd
@@ -67,8 +68,29 @@ def sidebar() -> tuple[list[tuple[str, bytes]], dict]:
             "discovery_threshold": st.number_input("Distinct recon commands (4688)", 2, 50, d.discovery_threshold),
             "discovery_window_min": st.number_input("…within minutes  ", 1, 1440, d.discovery_window_min),
         }
+    with st.sidebar.expander("Business hours"):
+        cfg["flag_off_hours"] = st.checkbox("Flag off-hours logons", d.flag_off_hours)
+        cfg["business_start_hour"], cfg["business_end_hour"] = st.slider(
+            "Business hours (local)", 0, 24, (d.business_start_hour, d.business_end_hour), format="%02d:00")
+        cfg["weekends_off_hours"] = st.checkbox("Weekends are off-hours", d.weekends_off_hours)
+        local = local_offset()
+        zones = [local] + (["UTC"] if local != "UTC" else []) + sorted(available_timezones())
+        sample_only = use_sample and not uploads  # the synthetic organisation works in UTC
+        cfg["timezone"] = st.selectbox("Timezone of the monitored users", zones,
+                                       index=zones.index("UTC") if sample_only else 0,
+                                       format_func=lambda z: f"{z} (this computer)" if z == local else z,
+                                       help="Log times are UTC. Business hours are checked in this timezone.")
     st.sidebar.caption("CyberSentinel only reads logs. It never runs remediation or changes system settings.")
     return files, cfg
+
+
+def local_offset() -> str:
+    """This computer's current UTC offset as 'UTC+HH:MM' (or 'UTC')."""
+    minutes = int(datetime.now().astimezone().utcoffset().total_seconds() // 60)
+    if minutes == 0:
+        return "UTC"
+    sign = "+" if minutes > 0 else "-"
+    return f"UTC{sign}{abs(minutes) // 60:02d}:{abs(minutes) % 60:02d}"
 
 
 def welcome() -> None:

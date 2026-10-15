@@ -56,6 +56,7 @@ upload ─► parsers ─► normalized events ─► detection engine ─► fi
 | `SUSPICIOUS_PARENT_CHILD` | 4688: Office app → shell/script host (High), web/DB server → shell (High), WMI → shell (Medium) | Medium/High |
 | `USER_PATH_EXECUTION` | 4688: executable run from `Users\Public`, `$Recycle.Bin`, `PerfLogs` (Medium) or Temp/Downloads (Low) | Low/Medium |
 | `DISCOVERY_BURST` | 4688: one user runs ≥ 4 distinct recon commands (`whoami`, `net user`, `nltest`, …) on one host in 10 min | Medium |
+| `OFF_HOURS_LOGON` | Interactive (2), RDP (10), cached (11) or untyped VPN/text logon outside business hours (default 07:00–19:00 Mon–Fri) in the configured timezone. Network/service logons and built-in accounts (SYSTEM, DWM-n, UMFD-n) are ignored. One finding per user and host | Low (RDP: Medium) |
 | `SUSPICIOUS_COMMAND` | Encoded/hidden PowerShell, download cradles, credential dumping, shadow-copy deletion, … | Medium–Critical |
 | `LOG_CLEARED`, `AUDIT_POLICY_CHANGED` | 1102 / 104, 4719 | High |
 | `SERVICE_INSTALLED`, `SCHEDULED_TASK`, `USER_CREATED`, `ACCOUNT_LOCKOUT` | 7045/4697, 4698, 4720, 4740 | Medium |
@@ -76,6 +77,9 @@ $env:CYBERSENTINEL_EVTX = "C:\temp\application.evtx"; .\.venv\Scripts\python -m 
 
 ## Limitations
 
+- Off-hours detection uses one schedule and timezone for everyone, not per-user baselines. Set the timezone
+  to where the monitored users work (the dashboard defaults to this computer's timezone). A wrong timezone
+  flags ordinary working hours.
 - Process rules need 4688 auditing enabled ("Audit Process Creation"), and command lines need
   "Include command line in process creation events". Neither is on by default.
 - Rule-based: it detects known patterns only, and thresholds need tuning per environment.

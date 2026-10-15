@@ -11,6 +11,8 @@ from __future__ import annotations
 import ipaddress
 import re
 from dataclasses import dataclass
+from datetime import timedelta, timezone, tzinfo
+from zoneinfo import ZoneInfo
 
 import numpy as np
 import pandas as pd
@@ -28,6 +30,11 @@ class DetectionConfig:
     flag_external_logons: bool = True     # successful logons from public IP addresses
     discovery_threshold: int = 4          # distinct recon commands by one user on one host ...
     discovery_window_min: int = 10        # ... within this many minutes
+    flag_off_hours: bool = True           # interactive/RDP logons outside business hours
+    business_start_hour: int = 7          # local time, inclusive
+    business_end_hour: int = 19           # local time, exclusive; start > end means hours span midnight
+    weekends_off_hours: bool = True       # Saturday/Sunday count as off-hours
+    timezone: str = "UTC"                 # IANA name ("Asia/Manila") or fixed offset ("UTC+08:00")
 
 
 PRIVILEGED_GROUPS = ("administrators", "domain admins", "enterprise admins", "schema admins",
@@ -398,6 +405,74 @@ def discovery_burst(df: pd.DataFrame, cfg: DetectionConfig) -> list[Finding]:
     return out
 
 
+# ---------------------------------------------------------------- off-hours logons
+
+# Logon types a person produces: interactive, RDP, cached interactive. Network (3), batch (4)
+# and service (5) logons run around the clock and would drown the signal.
+HUMAN_LOGON_TYPES = {"2", "10", "11"}
+# Built-in identities that log on interactively at every boot or session start.
+SYSTEM_ACCOUNTS = re.compile(r"^(?:system|local service|network service|anonymous logon|"
+                             r"dwm-\d+|umfd-\d+|font driver host\\umfd-\d+|window manager\\dwm-\d+)$", re.I)
+_OFFSET = re.compile(r"^UTC([+-])(\d{1,2}):?(\d{2})?$", re.I)
+
+
+def parse_timezone(name: str) -> tzinfo:
+    """'UTC', a fixed offset like 'UTC+08:00', or an IANA name like 'Asia/Manila'."""
+    name = (name or "UTC").strip()
+    if name.upper() == "UTC":
+        return timezone.utc
+    m = _OFFSET.match(name)
+    if m:
+        sign = 1 if m.group(1) == "+" else -1
+        return timezone(sign * timedelta(hours=int(m.group(2)), minutes=int(m.group(3) or 0)))
+    return ZoneInfo(name)  # raises for unknown names; the engine reports it as a rule error
+
+
+def is_off_hours(local: pd.Series, cfg: DetectionConfig) -> pd.Series:
+    hour, start, end = local.dt.hour, cfg.business_start_hour, cfg.business_end_hour
+    in_hours = (hour >= start) & (hour < end) if start < end else (hour >= start) | (hour < end)
+    off = ~in_hours
+    if cfg.weekends_off_hours:
+        off |= local.dt.dayofweek >= 5
+    return off
+
+
+def off_hours_logons(df: pd.DataFrame, cfg: DetectionConfig) -> list[Finding]:
+    if not cfg.flag_off_hours:
+        return []
+    tz = parse_timezone(cfg.timezone)
+    ok = df[(df["action"] == "logon_success") & df["timestamp"].notna() & df["user"].notna()]
+    ok = ok[ok["logon_type"].isna() | ok["logon_type"].isin(HUMAN_LOGON_TYPES)]
+    ok = ok[~ok["user"].str.match(SYSTEM_ACCOUNTS, na=False)]
+    if ok.empty:
+        return []
+    local = ok["timestamp"].dt.tz_convert(tz)
+    off = is_off_hours(local, cfg)
+    ok, local = ok[off], local[off]
+    hours = f"{cfg.business_start_hour:02d}:00–{cfg.business_end_hour:02d}:00" + \
+            (" Mon–Fri" if cfg.weekends_off_hours else "") + f" ({cfg.timezone})"
+    out = []
+    for (user, host), rows in ok.groupby([ok["user"], ok["host"].fillna("unknown")], sort=False):
+        rdp = rows["logon_type"].eq("10").any()
+        first, last = _span(rows)
+        times = ", ".join(local[rows.index].dt.strftime("%a %Y-%m-%d %H:%M").iloc[:5]) + \
+            (f" (+{len(rows) - 5} more)" if len(rows) > 5 else "")
+        entities = {"user": user, "host": host}
+        if rows["ip"].notna().any():
+            entities["source_ips"] = _top(rows["ip"])
+        if rows["logon_type"].notna().any():
+            entities["logon_types"] = ", ".join(sorted(rows["logon_type"].dropna().unique()))
+        out.append(Finding("OFF_HOURS_LOGON", f"Off-hours {'RDP ' if rdp else ''}logon: {user}",
+                           Severity.MEDIUM if rdp else Severity.LOW,
+                           f"{len(rows)} logon(s) outside business hours {hours}, local time: {times}.",
+                           first, last, len(rows), entities,
+                           "Confirm with the user or their manager that the work was expected; "
+                           "if not, review what the session did and reset the password.",
+                           "T1078", list(rows.index)))
+    return out
+
+
 ALL_RULES = [single_event_findings, privileged_group_additions, suspicious_commands,
              brute_force, password_spray, external_logons,
-             suspicious_parent_child, user_writable_execution, discovery_burst]
+             suspicious_parent_child, user_writable_execution, discovery_burst,
+             off_hours_logons]

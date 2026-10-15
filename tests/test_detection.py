@@ -220,3 +220,76 @@ def test_discovery_burst_is_per_user_and_window():
     slow = events([proc(i * 900, "bob", SYS32 + "x.exe", cmd=c) for i, c in enumerate(cmds)])  # 15 min apart
     assert "DISCOVERY_BURST" not in rule_ids(analyze(split_users))
     assert "DISCOVERY_BURST" not in rule_ids(analyze(slow))
+
+
+# ---------------------------------------------------------------- off-hours logons
+
+def logon_at(when: str, user="bob", ltype="2", ip="10.0.0.5"):
+    ts = pd.Timestamp(when, tz="UTC")
+    return normalize_frame(pd.DataFrame([{"timestamp": ts, "action": "logon_success", "user": user,
+                                          "logon_type": ltype, "ip": ip, "host": "PC1"}]))
+
+
+def off_hours(df, **cfg):
+    return [f for f in analyze(df, DetectionConfig(**cfg)).findings if f.rule_id == "OFF_HOURS_LOGON"]
+
+
+def test_sample_scenario_off_hours(sample_result):
+    found = [f for f in sample_result.findings if f.rule_id == "OFF_HOURS_LOGON"]
+    assert [(f.entities["user"], f.severity) for f in found] == [("kpatel", Severity.MEDIUM)]  # RDP at 02:40
+
+
+@pytest.mark.parametrize("when,expected", [
+    ("2026-03-02 06:59", True),   # Monday, just before 07:00
+    ("2026-03-02 07:00", False),  # start is inclusive
+    ("2026-03-02 18:59", False),
+    ("2026-03-02 19:00", True),   # end is exclusive
+    ("2026-03-07 12:00", True),   # Saturday
+])
+def test_business_hour_boundaries(when, expected):
+    assert bool(off_hours(logon_at(when))) is expected
+
+
+def test_weekend_setting():
+    assert not off_hours(logon_at("2026-03-07 12:00"), weekends_off_hours=False)
+
+
+@pytest.mark.parametrize("tz", ["Asia/Manila", "UTC+08:00", "UTC+8"])
+def test_timezone_conversion(tz):
+    # 02:00 UTC Monday is 10:00 in Manila (UTC+8, no DST): business hours there
+    assert off_hours(logon_at("2026-03-02 02:00"))
+    assert not off_hours(logon_at("2026-03-02 02:00"), timezone=tz)
+
+
+def test_dst_aware_timezone():
+    # 11:30 UTC is 06:30 in New York in winter (EST, UTC-5) but 07:30 in summer (EDT, UTC-4)
+    assert off_hours(logon_at("2026-01-15 11:30"), timezone="America/New_York")
+    assert not off_hours(logon_at("2026-07-15 11:30"), timezone="America/New_York")
+
+
+def test_overnight_shift():
+    cfg = dict(business_start_hour=22, business_end_hour=6, weekends_off_hours=False)
+    assert not off_hours(logon_at("2026-03-02 23:00"), **cfg)
+    assert not off_hours(logon_at("2026-03-02 03:00"), **cfg)
+    assert off_hours(logon_at("2026-03-02 12:00"), **cfg)
+
+
+@pytest.mark.parametrize("user,ltype,flagged", [
+    ("bob", "2", True), ("bob", "10", True), ("bob", "11", True), ("bob", None, True),  # None: VPN/text logs
+    ("bob", "3", False), ("bob", "5", False),                                         # network, service
+    ("SYSTEM", "2", False), ("DWM-1", "2", False), ("UMFD-0", "2", False),
+])
+def test_logon_type_and_system_account_filtering(user, ltype, flagged):
+    assert bool(off_hours(logon_at("2026-03-02 02:00", user=user, ltype=ltype))) is flagged
+
+
+def test_rdp_is_medium_and_logons_grouped_per_user():
+    df = pd.concat([logon_at("2026-03-02 02:00"), logon_at("2026-03-02 03:00", ltype="10")], ignore_index=True)
+    found = off_hours(df)
+    assert len(found) == 1 and found[0].count == 2 and found[0].severity == Severity.MEDIUM
+
+
+def test_off_hours_can_be_disabled_and_bad_timezone_is_reported():
+    assert not off_hours(logon_at("2026-03-02 02:00"), flag_off_hours=False)
+    r = analyze(logon_at("2026-03-02 02:00"), DetectionConfig(timezone="Mars/Olympus"))
+    assert any("off_hours_logons" in e for e in r.errors)
