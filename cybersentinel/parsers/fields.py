@@ -86,8 +86,10 @@ def extract_fields(message) -> dict[str, str]:
     # last non-placeholder "Account Name" is the account the event is about.
     out["user"] = _last_real(_all("Account Name", message)) or _last_real(_all("Target User Name", message))
     if not out["user"]:
-        m = re.search(r"(?:for (?:invalid )?user|\buser(?:name)?\s*[=:]|\baccount\s*[=:])\s*['\"]?([\w.\\@-]+)",
-                      message, re.I)
+        m = (re.search(r"(?:for (?:invalid )?user|\buser(?:name)?\s*[=:]|\baccount\s*[=:])\s*['\"]?([\w.\\@-]+)",
+                       message, re.I)
+             or re.search(r"\b(?:user|account)\s+['\"]?([\w.\\@-]+)['\"]?\s+(?:was\s+|has been\s+|is\s+)?locked",
+                          message, re.I))
         if m:
             out["user"] = m.group(1)
     ip = _last_real(_all("Source Network Address", message)) or _last_real(_all("Client Address", message))
