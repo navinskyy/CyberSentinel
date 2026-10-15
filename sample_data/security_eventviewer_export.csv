@@ -1,0 +1,1407 @@
+Keywords,Date and Time,Source,Event ID,Task Category
+Audit Success,2026-03-02 08:06:48,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		3
+
+New Logon:
+	Account Name:		asmith
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.64
+"
+Audit Success,2026-03-02 08:07:04,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		2
+
+New Logon:
+	Account Name:		jdoe
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.34
+"
+Audit Success,2026-03-02 08:40:39,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		3
+
+New Logon:
+	Account Name:		jdoe
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.46
+"
+Audit Success,2026-03-02 08:48:55,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		2
+
+New Logon:
+	Account Name:		jdoe
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.29
+"
+Audit Success,2026-03-02 08:55:43,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		3
+
+New Logon:
+	Account Name:		jdoe
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.23
+"
+Audit Success,2026-03-02 08:57:14,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		3
+
+New Logon:
+	Account Name:		jdoe
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.71
+"
+Audit Failure,2026-03-02 08:59:32,Microsoft-Windows-Security-Auditing,4625,Logon,"An account failed to log on.
+
+Subject:
+	Account Name:		-
+
+Logon Type:			2
+
+Account For Which Logon Failed:
+	Account Name:		rgarcia
+
+Failure Information:
+	Failure Reason:		Unknown user name or bad password.
+
+Network Information:
+	Source Network Address:	10.0.0.31
+"
+Audit Success,2026-03-02 08:59:37,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		3
+
+New Logon:
+	Account Name:		rgarcia
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.23
+"
+Audit Success,2026-03-02 09:05:21,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		2
+
+New Logon:
+	Account Name:		jdoe
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.57
+"
+Audit Success,2026-03-02 09:07:13,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		3
+
+New Logon:
+	Account Name:		rgarcia
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.76
+"
+Audit Success,2026-03-02 09:11:02,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		3
+
+New Logon:
+	Account Name:		asmith
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.69
+"
+Audit Success,2026-03-02 09:13:38,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		2
+
+New Logon:
+	Account Name:		asmith
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.54
+"
+Audit Failure,2026-03-02 09:15:00,Microsoft-Windows-Security-Auditing,4625,Logon,"An account failed to log on.
+
+Subject:
+	Account Name:		-
+
+Logon Type:			3
+
+Account For Which Logon Failed:
+	Account Name:		administrator
+
+Failure Information:
+	Failure Reason:		Unknown user name or bad password.
+
+Network Information:
+	Source Network Address:	203.0.113.50
+"
+Audit Failure,2026-03-02 09:15:08,Microsoft-Windows-Security-Auditing,4625,Logon,"An account failed to log on.
+
+Subject:
+	Account Name:		-
+
+Logon Type:			3
+
+Account For Which Logon Failed:
+	Account Name:		administrator
+
+Failure Information:
+	Failure Reason:		Unknown user name or bad password.
+
+Network Information:
+	Source Network Address:	203.0.113.50
+"
+Audit Failure,2026-03-02 09:15:16,Microsoft-Windows-Security-Auditing,4625,Logon,"An account failed to log on.
+
+Subject:
+	Account Name:		-
+
+Logon Type:			3
+
+Account For Which Logon Failed:
+	Account Name:		administrator
+
+Failure Information:
+	Failure Reason:		Unknown user name or bad password.
+
+Network Information:
+	Source Network Address:	203.0.113.50
+"
+Audit Failure,2026-03-02 09:15:24,Microsoft-Windows-Security-Auditing,4625,Logon,"An account failed to log on.
+
+Subject:
+	Account Name:		-
+
+Logon Type:			3
+
+Account For Which Logon Failed:
+	Account Name:		administrator
+
+Failure Information:
+	Failure Reason:		Unknown user name or bad password.
+
+Network Information:
+	Source Network Address:	203.0.113.50
+"
+Audit Failure,2026-03-02 09:15:32,Microsoft-Windows-Security-Auditing,4625,Logon,"An account failed to log on.
+
+Subject:
+	Account Name:		-
+
+Logon Type:			3
+
+Account For Which Logon Failed:
+	Account Name:		administrator
+
+Failure Information:
+	Failure Reason:		Unknown user name or bad password.
+
+Network Information:
+	Source Network Address:	203.0.113.50
+"
+Audit Failure,2026-03-02 09:15:40,Microsoft-Windows-Security-Auditing,4625,Logon,"An account failed to log on.
+
+Subject:
+	Account Name:		-
+
+Logon Type:			3
+
+Account For Which Logon Failed:
+	Account Name:		administrator
+
+Failure Information:
+	Failure Reason:		Unknown user name or bad password.
+
+Network Information:
+	Source Network Address:	203.0.113.50
+"
+Audit Failure,2026-03-02 09:15:48,Microsoft-Windows-Security-Auditing,4625,Logon,"An account failed to log on.
+
+Subject:
+	Account Name:		-
+
+Logon Type:			3
+
+Account For Which Logon Failed:
+	Account Name:		administrator
+
+Failure Information:
+	Failure Reason:		Unknown user name or bad password.
+
+Network Information:
+	Source Network Address:	203.0.113.50
+"
+Audit Failure,2026-03-02 09:15:56,Microsoft-Windows-Security-Auditing,4625,Logon,"An account failed to log on.
+
+Subject:
+	Account Name:		-
+
+Logon Type:			3
+
+Account For Which Logon Failed:
+	Account Name:		administrator
+
+Failure Information:
+	Failure Reason:		Unknown user name or bad password.
+
+Network Information:
+	Source Network Address:	203.0.113.50
+"
+Audit Failure,2026-03-02 09:16:04,Microsoft-Windows-Security-Auditing,4625,Logon,"An account failed to log on.
+
+Subject:
+	Account Name:		-
+
+Logon Type:			3
+
+Account For Which Logon Failed:
+	Account Name:		administrator
+
+Failure Information:
+	Failure Reason:		Unknown user name or bad password.
+
+Network Information:
+	Source Network Address:	203.0.113.50
+"
+Audit Failure,2026-03-02 09:16:12,Microsoft-Windows-Security-Auditing,4625,Logon,"An account failed to log on.
+
+Subject:
+	Account Name:		-
+
+Logon Type:			3
+
+Account For Which Logon Failed:
+	Account Name:		administrator
+
+Failure Information:
+	Failure Reason:		Unknown user name or bad password.
+
+Network Information:
+	Source Network Address:	203.0.113.50
+"
+Audit Failure,2026-03-02 09:16:20,Microsoft-Windows-Security-Auditing,4625,Logon,"An account failed to log on.
+
+Subject:
+	Account Name:		-
+
+Logon Type:			3
+
+Account For Which Logon Failed:
+	Account Name:		administrator
+
+Failure Information:
+	Failure Reason:		Unknown user name or bad password.
+
+Network Information:
+	Source Network Address:	203.0.113.50
+"
+Audit Failure,2026-03-02 09:16:28,Microsoft-Windows-Security-Auditing,4625,Logon,"An account failed to log on.
+
+Subject:
+	Account Name:		-
+
+Logon Type:			3
+
+Account For Which Logon Failed:
+	Account Name:		administrator
+
+Failure Information:
+	Failure Reason:		Unknown user name or bad password.
+
+Network Information:
+	Source Network Address:	203.0.113.50
+"
+Audit Failure,2026-03-02 09:16:36,Microsoft-Windows-Security-Auditing,4625,Logon,"An account failed to log on.
+
+Subject:
+	Account Name:		-
+
+Logon Type:			3
+
+Account For Which Logon Failed:
+	Account Name:		administrator
+
+Failure Information:
+	Failure Reason:		Unknown user name or bad password.
+
+Network Information:
+	Source Network Address:	203.0.113.50
+"
+Audit Failure,2026-03-02 09:16:44,Microsoft-Windows-Security-Auditing,4625,Logon,"An account failed to log on.
+
+Subject:
+	Account Name:		-
+
+Logon Type:			3
+
+Account For Which Logon Failed:
+	Account Name:		administrator
+
+Failure Information:
+	Failure Reason:		Unknown user name or bad password.
+
+Network Information:
+	Source Network Address:	203.0.113.50
+"
+Audit Success,2026-03-02 09:16:55,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		3
+
+New Logon:
+	Account Name:		administrator
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	203.0.113.50
+"
+Audit Success,2026-03-02 09:16:56,Microsoft-Windows-Security-Auditing,4672,Logon,"Special privileges assigned to new logon.
+
+Subject:
+	Account Name:		administrator
+"
+Audit Success,2026-03-02 09:35:13,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		2
+
+New Logon:
+	Account Name:		asmith
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.52
+"
+Audit Failure,2026-03-02 09:44:38,Microsoft-Windows-Security-Auditing,4625,Logon,"An account failed to log on.
+
+Subject:
+	Account Name:		-
+
+Logon Type:			2
+
+Account For Which Logon Failed:
+	Account Name:		rgarcia
+
+Failure Information:
+	Failure Reason:		Unknown user name or bad password.
+
+Network Information:
+	Source Network Address:	10.0.0.31
+"
+Audit Success,2026-03-02 09:44:43,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		3
+
+New Logon:
+	Account Name:		rgarcia
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.25
+"
+Audit Success,2026-03-02 09:51:15,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		3
+
+New Logon:
+	Account Name:		asmith
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.32
+"
+Audit Success,2026-03-02 09:54:01,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		2
+
+New Logon:
+	Account Name:		mlee
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.35
+"
+Audit Success,2026-03-02 09:57:43,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		3
+
+New Logon:
+	Account Name:		rgarcia
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.68
+"
+Audit Success,2026-03-02 10:15:59,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		2
+
+New Logon:
+	Account Name:		mlee
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.76
+"
+Audit Success,2026-03-02 10:17:16,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		2
+
+New Logon:
+	Account Name:		jdoe
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.76
+"
+Audit Success,2026-03-02 10:39:13,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		2
+
+New Logon:
+	Account Name:		mlee
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.26
+"
+Audit Success,2026-03-02 10:39:17,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		2
+
+New Logon:
+	Account Name:		mlee
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.58
+"
+Audit Success,2026-03-02 10:45:34,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		2
+
+New Logon:
+	Account Name:		rgarcia
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.78
+"
+Audit Failure,2026-03-02 11:00:00,Microsoft-Windows-Security-Auditing,4625,Logon,"An account failed to log on.
+
+Subject:
+	Account Name:		-
+
+Logon Type:			3
+
+Account For Which Logon Failed:
+	Account Name:		jdoe
+
+Failure Information:
+	Failure Reason:		Unknown user name or bad password.
+
+Network Information:
+	Source Network Address:	198.51.100.7
+"
+Audit Failure,2026-03-02 11:00:20,Microsoft-Windows-Security-Auditing,4625,Logon,"An account failed to log on.
+
+Subject:
+	Account Name:		-
+
+Logon Type:			3
+
+Account For Which Logon Failed:
+	Account Name:		asmith
+
+Failure Information:
+	Failure Reason:		Unknown user name or bad password.
+
+Network Information:
+	Source Network Address:	198.51.100.7
+"
+Audit Failure,2026-03-02 11:00:40,Microsoft-Windows-Security-Auditing,4625,Logon,"An account failed to log on.
+
+Subject:
+	Account Name:		-
+
+Logon Type:			3
+
+Account For Which Logon Failed:
+	Account Name:		mlee
+
+Failure Information:
+	Failure Reason:		Unknown user name or bad password.
+
+Network Information:
+	Source Network Address:	198.51.100.7
+"
+Audit Failure,2026-03-02 11:01:00,Microsoft-Windows-Security-Auditing,4625,Logon,"An account failed to log on.
+
+Subject:
+	Account Name:		-
+
+Logon Type:			3
+
+Account For Which Logon Failed:
+	Account Name:		kpatel
+
+Failure Information:
+	Failure Reason:		Unknown user name or bad password.
+
+Network Information:
+	Source Network Address:	198.51.100.7
+"
+Audit Failure,2026-03-02 11:01:20,Microsoft-Windows-Security-Auditing,4625,Logon,"An account failed to log on.
+
+Subject:
+	Account Name:		-
+
+Logon Type:			3
+
+Account For Which Logon Failed:
+	Account Name:		rgarcia
+
+Failure Information:
+	Failure Reason:		Unknown user name or bad password.
+
+Network Information:
+	Source Network Address:	198.51.100.7
+"
+Audit Failure,2026-03-02 11:01:40,Microsoft-Windows-Security-Auditing,4625,Logon,"An account failed to log on.
+
+Subject:
+	Account Name:		-
+
+Logon Type:			3
+
+Account For Which Logon Failed:
+	Account Name:		tnguyen
+
+Failure Information:
+	Failure Reason:		Unknown user name or bad password.
+
+Network Information:
+	Source Network Address:	198.51.100.7
+"
+Audit Failure,2026-03-02 11:02:00,Microsoft-Windows-Security-Auditing,4625,Logon,"An account failed to log on.
+
+Subject:
+	Account Name:		-
+
+Logon Type:			3
+
+Account For Which Logon Failed:
+	Account Name:		bwilson
+
+Failure Information:
+	Failure Reason:		Unknown user name or bad password.
+
+Network Information:
+	Source Network Address:	198.51.100.7
+"
+Audit Failure,2026-03-02 11:02:20,Microsoft-Windows-Security-Auditing,4625,Logon,"An account failed to log on.
+
+Subject:
+	Account Name:		-
+
+Logon Type:			3
+
+Account For Which Logon Failed:
+	Account Name:		hr_admin
+
+Failure Information:
+	Failure Reason:		Unknown user name or bad password.
+
+Network Information:
+	Source Network Address:	198.51.100.7
+"
+Audit Success,2026-03-02 11:04:00,Microsoft-Windows-Security-Auditing,4740,Logon,"A user account was locked out.
+
+Subject:
+	Account Name:		DC01$
+
+Account That Was Locked Out:
+	Account Name:		hr_admin
+"
+Audit Success,2026-03-02 11:07:17,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		2
+
+New Logon:
+	Account Name:		kpatel
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.35
+"
+Audit Success,2026-03-02 11:29:42,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		3
+
+New Logon:
+	Account Name:		mlee
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.35
+"
+Audit Success,2026-03-02 11:39:34,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		3
+
+New Logon:
+	Account Name:		asmith
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.66
+"
+Audit Success,2026-03-02 11:58:55,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		3
+
+New Logon:
+	Account Name:		jdoe
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.44
+"
+Audit Success,2026-03-02 12:00:25,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		2
+
+New Logon:
+	Account Name:		jdoe
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.80
+"
+Audit Success,2026-03-02 12:02:10,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		3
+
+New Logon:
+	Account Name:		kpatel
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.51
+"
+Audit Success,2026-03-02 12:29:32,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		2
+
+New Logon:
+	Account Name:		asmith
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.52
+"
+Audit Success,2026-03-02 13:00:53,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		3
+
+New Logon:
+	Account Name:		rgarcia
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.76
+"
+Audit Success,2026-03-02 13:05:53,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		2
+
+New Logon:
+	Account Name:		rgarcia
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.58
+"
+Audit Failure,2026-03-02 13:07:24,Microsoft-Windows-Security-Auditing,4625,Logon,"An account failed to log on.
+
+Subject:
+	Account Name:		-
+
+Logon Type:			2
+
+Account For Which Logon Failed:
+	Account Name:		mlee
+
+Failure Information:
+	Failure Reason:		Unknown user name or bad password.
+
+Network Information:
+	Source Network Address:	10.0.0.31
+"
+Audit Success,2026-03-02 13:07:29,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		2
+
+New Logon:
+	Account Name:		mlee
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.79
+"
+Audit Success,2026-03-02 13:14:15,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		2
+
+New Logon:
+	Account Name:		jdoe
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.35
+"
+Audit Success,2026-03-02 13:30:00,Microsoft-Windows-Security-Auditing,4720,Logon,"A user account was created.
+
+Subject:
+	Account Name:		administrator
+
+New Account:
+	Account Name:		svc_backup2
+"
+Audit Success,2026-03-02 13:31:00,Microsoft-Windows-Security-Auditing,4732,Logon,"A member was added to a security-enabled local group.
+
+Subject:
+	Account Name:		administrator
+
+Member:
+	Account Name:		svc_backup2
+
+Group:
+	Group Name:		Administrators
+"
+Audit Success,2026-03-02 13:38:04,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		3
+
+New Logon:
+	Account Name:		rgarcia
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.35
+"
+Audit Success,2026-03-02 13:42:00,Service Control Manager,7045,Logon,"A service was installed in the system.
+
+Service Name:  WinUpdateHelper
+Service File Name:  powershell.exe -nop -w hidden -enc SQBFAFgAIAAoAE4AZQB3AC0ATwBiAGoAZQBjAHQA
+Service Type:  user mode service
+Service Start Type:  auto start
+Service Account:  LocalSystem"
+Audit Success,2026-03-02 13:48:07,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		2
+
+New Logon:
+	Account Name:		mlee
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.47
+"
+Audit Success,2026-03-02 13:50:00,Microsoft-Windows-Eventlog,1102,Logon,"The audit log was cleared.
+Subject:
+	Account Name:	administrator
+"
+Audit Success,2026-03-02 14:07:54,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		3
+
+New Logon:
+	Account Name:		mlee
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.58
+"
+Audit Success,2026-03-02 14:13:10,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		2
+
+New Logon:
+	Account Name:		mlee
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.42
+"
+Audit Success,2026-03-02 14:18:18,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		3
+
+New Logon:
+	Account Name:		asmith
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.48
+"
+Audit Success,2026-03-02 14:22:28,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		2
+
+New Logon:
+	Account Name:		rgarcia
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.48
+"
+Audit Success,2026-03-02 14:28:17,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		3
+
+New Logon:
+	Account Name:		rgarcia
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.34
+"
+Audit Success,2026-03-02 14:39:16,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		3
+
+New Logon:
+	Account Name:		kpatel
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.38
+"
+Audit Success,2026-03-02 14:48:23,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		3
+
+New Logon:
+	Account Name:		asmith
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.28
+"
+Audit Failure,2026-03-02 14:50:52,Microsoft-Windows-Security-Auditing,4625,Logon,"An account failed to log on.
+
+Subject:
+	Account Name:		-
+
+Logon Type:			2
+
+Account For Which Logon Failed:
+	Account Name:		jdoe
+
+Failure Information:
+	Failure Reason:		Unknown user name or bad password.
+
+Network Information:
+	Source Network Address:	10.0.0.31
+"
+Audit Success,2026-03-02 14:50:57,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		3
+
+New Logon:
+	Account Name:		jdoe
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.30
+"
+Audit Success,2026-03-02 15:12:38,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		3
+
+New Logon:
+	Account Name:		jdoe
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.44
+"
+Audit Success,2026-03-02 15:21:22,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		3
+
+New Logon:
+	Account Name:		kpatel
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.46
+"
+Audit Failure,2026-03-02 15:50:29,Microsoft-Windows-Security-Auditing,4625,Logon,"An account failed to log on.
+
+Subject:
+	Account Name:		-
+
+Logon Type:			2
+
+Account For Which Logon Failed:
+	Account Name:		jdoe
+
+Failure Information:
+	Failure Reason:		Unknown user name or bad password.
+
+Network Information:
+	Source Network Address:	10.0.0.31
+"
+Audit Success,2026-03-02 15:50:34,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		3
+
+New Logon:
+	Account Name:		jdoe
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.79
+"
+Audit Success,2026-03-02 15:59:33,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		2
+
+New Logon:
+	Account Name:		mlee
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.55
+"
+Audit Success,2026-03-02 16:04:51,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		2
+
+New Logon:
+	Account Name:		kpatel
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.32
+"
+Audit Success,2026-03-02 16:06:35,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		3
+
+New Logon:
+	Account Name:		asmith
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.36
+"
+Audit Success,2026-03-02 16:17:52,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		2
+
+New Logon:
+	Account Name:		jdoe
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.68
+"
+Audit Success,2026-03-02 16:20:01,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		3
+
+New Logon:
+	Account Name:		jdoe
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.79
+"
+Audit Success,2026-03-02 16:31:25,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		3
+
+New Logon:
+	Account Name:		kpatel
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.29
+"
+Audit Success,2026-03-02 16:40:05,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		2
+
+New Logon:
+	Account Name:		asmith
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.24
+"
+Audit Success,2026-03-02 17:01:00,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		2
+
+New Logon:
+	Account Name:		rgarcia
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.39
+"
+Audit Success,2026-03-02 17:12:48,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		3
+
+New Logon:
+	Account Name:		asmith
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.65
+"
+Audit Success,2026-03-02 17:18:26,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		3
+
+New Logon:
+	Account Name:		asmith
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.48
+"
+Audit Success,2026-03-02 17:23:06,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		2
+
+New Logon:
+	Account Name:		jdoe
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.61
+"
+Audit Success,2026-03-02 17:29:42,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		2
+
+New Logon:
+	Account Name:		kpatel
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.29
+"
+Audit Success,2026-03-02 17:34:34,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		3
+
+New Logon:
+	Account Name:		mlee
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.67
+"
+Audit Success,2026-03-02 17:36:06,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		2
+
+New Logon:
+	Account Name:		jdoe
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.54
+"
+Audit Failure,2026-03-02 17:58:25,Microsoft-Windows-Security-Auditing,4625,Logon,"An account failed to log on.
+
+Subject:
+	Account Name:		-
+
+Logon Type:			2
+
+Account For Which Logon Failed:
+	Account Name:		rgarcia
+
+Failure Information:
+	Failure Reason:		Unknown user name or bad password.
+
+Network Information:
+	Source Network Address:	10.0.0.31
+"
+Audit Success,2026-03-02 17:58:30,Microsoft-Windows-Security-Auditing,4624,Logon,"An account was successfully logged on.
+
+Subject:
+	Account Name:		WS-FINANCE01$
+
+Logon Information:
+	Logon Type:		2
+
+New Logon:
+	Account Name:		rgarcia
+	Account Domain:		CORP
+
+Network Information:
+	Source Network Address:	10.0.0.78
+"
