@@ -1,0 +1,7 @@
+[server]
+# Logs are sensitive: serve on this machine only, not the local network.
+address = "localhost"
+maxUploadSize = 500  # MB
+
+[browser]
+gatherUsageStats = false
