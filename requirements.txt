@@ -1,4 +1,4 @@
-streamlit>=1.30
+﻿streamlit>=1.30
 pandas>=2.0
-python-evtx>=0.8
+evtx>=0.13        # pyevtx-rs; do not also install python-evtx (name collision on Windows)
 pytest>=8.0

@@ -112,3 +112,15 @@ def test_load_files_merges_and_sorts():
     ])
     assert df["timestamp"].is_monotonic_increasing
     assert set(df["source"].dropna()) >= {"Microsoft-Windows-Security-Auditing"}
+
+
+@pytest.mark.parametrize("eid,source,expected", [
+    (4625, "Microsoft-Windows-Security-Auditing", "logon_failure"),
+    (4625, "Microsoft-Windows-EventSystem", None),   # same ID, unrelated provider
+    (4625, None, "logon_failure"),                    # unknown provider: trust the ID
+    (7045, "Service Control Manager", "service_installed"),
+    (7045, "SomeApp", None),
+    (104, "Microsoft-Windows-Eventlog", "log_cleared"),
+])
+def test_classify_is_provider_aware(eid, source, expected):
+    assert classify(eid, "An account failed to log on.", source) == expected

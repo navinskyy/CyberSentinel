@@ -27,6 +27,24 @@ EVENT_ID_ACTIONS: dict[int, str] = {
     4719: "audit_policy_changed",
 }
 
+# Event IDs are only unique per provider (e.g. Microsoft-Windows-EventSystem also logs 4625),
+# so an ID is trusted only when the source matches, or when the source is unknown.
+_SECURITY = ("security-auditing", "security")
+EVENT_ID_PROVIDERS: dict[int, tuple[str, ...]] = {
+    7045: ("service control manager",),
+    1102: ("security-auditing", "eventlog"),
+    104: ("eventlog",),
+}
+
+
+def id_matches_provider(event_id, source) -> bool:
+    if pd.isna(event_id) or int(event_id) not in EVENT_ID_ACTIONS:
+        return False
+    if source is None or pd.isna(source):
+        return True
+    src = str(source).lower()
+    return any(p in src for p in EVENT_ID_PROVIDERS.get(int(event_id), _SECURITY))
+
 # Free-text keyword patterns -> action, checked in order (first match wins).
 TEXT_ACTION_PATTERNS: list[tuple[str, re.Pattern]] = [
     ("account_lockout", re.compile(r"\baccount\b(?:\s+\S+)?\s+(?:was\s+|has been\s+|is\s+)?locked|lockout", re.I)),
@@ -89,10 +107,12 @@ def extract_fields(message) -> dict[str, str]:
     return {k: v for k, v in out.items() if v}
 
 
-def classify(event_id, message) -> str | None:
-    if pd.notna(event_id) and int(event_id) in EVENT_ID_ACTIONS:
+def classify(event_id, message, source=None) -> str | None:
+    """Map by Event ID when it belongs to the expected provider; keyword-match only
+    free-text lines that have no Event ID at all."""
+    if id_matches_provider(event_id, source):
         return EVENT_ID_ACTIONS[int(event_id)]
-    if isinstance(message, str):
+    if pd.isna(event_id) and isinstance(message, str):
         for action, pattern in TEXT_ACTION_PATTERNS:
             if pattern.search(message):
                 return action
@@ -107,6 +127,7 @@ def enrich(df: pd.DataFrame) -> pd.DataFrame:
     for col in ("user", "ip", "logon_type", "process", "command_line"):
         fill = extracted.map(lambda d, c=col: d.get(c))
         df[col] = df[col].astype("object").where(df[col].notna(), fill)
-    actions = pd.Series([classify(e, m) for e, m in zip(df["event_id"], df["message"])], index=df.index)
+    actions = pd.Series([classify(e, m, s) for e, m, s in zip(df["event_id"], df["message"], df["source"])],
+                        index=df.index)
     df["action"] = df["action"].astype("object").where(df["action"].notna(), actions)
     return df
